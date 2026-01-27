@@ -3,15 +3,8 @@ public class Star {
         // Prints welcome message in UI
         Ui.printWelcomeMessage();
 
-        while (true){
-            String message = Ui.scanInput();
-            if (message.equals("bye")){
-                break;
-            }
-            else {
-                System.out.println(message + "\n");
-            }
-        }
+        // Scans for user input till "bye" received
+        Ui.scanInput();
 
         // Prints goodbye message in UI
         Ui.printOutMessage();
