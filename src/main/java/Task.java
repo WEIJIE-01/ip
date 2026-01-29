@@ -1,17 +1,16 @@
+/**
+ * Task class has 2 states: done and not done
+ */
 public class Task {
     public String name;
     public boolean isDone = false;
 
-    /**
-     * Constructor
-     */
+    // Constructor
     public Task(String name){
         this.name = name;
     }
 
-    /**
-     * Marks task as done
-     */
+    // Marks task as done
     public void markAsDone (){
         if (isDone) {
             System.out.println(Ui.BOT_LABEL + "This task has already been done!");
@@ -21,9 +20,7 @@ public class Task {
         }
     }
 
-    /**
-     * Unmarks task as done
-     */
+    // Unmarks task as done
     public void unmarkAsDone (){
         if (isDone) {
             this.isDone = false;

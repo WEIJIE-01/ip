@@ -5,11 +5,9 @@ import java.util.ArrayList;
  */
 public class TaskList {
 
-    public static ArrayList<Task> tasks = new ArrayList<Task>(100); //Maximum 100 tasks
+    public static ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
 
-    /**
-     * Adds task
-     */
+    // Adds task
     public static void addTask(Task task){
         tasks.add(task);
     }
@@ -18,9 +16,7 @@ public class TaskList {
         return tasks.get(taskIndex);
     }
 
-    /**
-     * Returns number of existing tasks
-     */
+    // Returns number of existing tasks
     public static int getSize(){
         return tasks.size();
     }
