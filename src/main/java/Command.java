@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+
+/**
+ * Executes command based on the first token in message
+ */
+abstract class Command {
+    abstract void execute(ArrayList<Task> tasks);
+}
+
+// list
+class ListCommand extends Command {
+    void execute(ArrayList<Task> tasks) {
+        Ui.printTasks();
+    }
+}
+
+// bye
+class ByeCommand extends Command {
+    void execute(ArrayList<Task> tasks) {
+        Ui.printOutMessage();   // Prints goodbye message in UI
+    }
+}
+
+// Invalid
+class AddTaskCommand extends Command {
+    public Task task;
+
+    // Constructor
+    AddTaskCommand(Task task){
+        this.task = task;
+    }
+    void execute(ArrayList<Task> tasks) {
+        tasks.add(task);
+        Ui.printNewTask(task);
+    }
+}
+
+// mark
+class MarkCommand extends Command {
+    public int index;
+
+    // Constructor
+    MarkCommand(int i) {
+        this.index = i;
+    }
+
+    void execute(ArrayList<Task> tasks) {
+        if (index < 0 || index >= tasks.size()) {
+            Ui.printString("Invalid index!");
+            return;
+        }
+        Task task = tasks.get(index);
+        if (task.isDone) {
+            Ui.printString("Already done!");
+        } else {
+            task.markAsDone();
+            Ui.showMarkSuccess(task);
+        }
+    }
+}
+
+// unmark
+class UnmarkCommand extends MarkCommand {
+    public int index;
+
+    // Constructor
+    UnmarkCommand(int i) {
+        super(i);
+    }
+
+    void execute(ArrayList<Task> tasks) {
+        if (index < 0 || index >= tasks.size()) {
+            Ui.printString("Invalid index!");
+            return;
+        }
+        Task task = tasks.get(index);
+        if (!task.isDone) {
+            Ui.printString("Already not done");
+        } else {
+            task.unmarkAsDone();
+            Ui.showUnmarkSuccess(task);
+        }
+    }
+}

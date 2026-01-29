@@ -5,7 +5,5 @@ public class Star {
 
         Ui.scanInput();    // Scans for user input till "bye" received
 
-        Ui.printOutMessage();   // Prints goodbye message in UI
-
     }
 }
