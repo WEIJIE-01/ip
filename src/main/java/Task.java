@@ -1,18 +1,36 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
- * Task class has 2 states: done and not done
+ * Task has 2 states: done and not done
+ * Events are tasks with start and end date/time
  */
 public class Task {
     public String name;
     public boolean isDone = false;
+    public boolean isToDo = false;
 
     // Constructor
-    public Task(String name){
+    public Task(String name, boolean isToDo){
         this.name = name;
+        this.isToDo = isToDo;
+    }
+
+    public Task(String name) {
+        this.name = name;
+    }
+
+    // Returns a string containing task status
+    public String toString(){
+        String doneStatus = isDone ? "[X]" : "[ ]";
+        String toDoStatus = isToDo ? "[T]" : "[ ]";
+        // returns [T][X] task name
+        return toDoStatus + doneStatus + " " + this.name;
     }
 
     // Marks task as done
     public void markAsDone (){
-        if (isDone) {
+        if (this.isDone) {
             System.out.println(Ui.BOT_LABEL + "This task has already been done!");
         }
         else {
@@ -31,3 +49,4 @@ public class Task {
         }
     }
 }
+

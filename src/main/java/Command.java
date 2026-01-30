@@ -21,7 +21,7 @@ class ByeCommand extends Command {
     }
 }
 
-// Invalid
+// New Task
 class AddTaskCommand extends Command {
     public Task task;
 
@@ -32,6 +32,7 @@ class AddTaskCommand extends Command {
     void execute(ArrayList<Task> tasks) {
         tasks.add(task);
         Ui.printNewTask(task);
+        Ui.printString(task.toString());
     }
 }
 
@@ -73,7 +74,7 @@ class UnmarkCommand extends MarkCommand {
             Ui.printString("Invalid index!");
             return;
         }
-        Task task = tasks.get(index);
+        Task task = TaskList.getTask(index);
         if (!task.isDone) {
             Ui.printString("Already not done");
         } else {
