@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * LogicController reads messages and calls command respectively
  */
@@ -20,12 +18,12 @@ public class LogicController {
                 case "list":
                     return new ListCommand();
                 case "mark":
-                    int index = message.parseTaskIndex(message.tokens);
+                    int index = message.parseTaskIndex();
                     return new MarkCommand(index);
                 case "unmark":
-                    int index2 = message.parseTaskIndex(message.tokens);
+                    int index2 = message.parseTaskIndex();
                     return new UnmarkCommand(index2);  // Create these classes
-                case "todo": ;
+                case "todo":
                     Task todoTask = new Task(message.parseTaskName());
                     return new AddTaskCommand(todoTask);
                 case "deadline":
@@ -41,14 +39,14 @@ public class LogicController {
 
                     Event eventTask = new Event(message.parseTaskName(), stEvent, byEvent);
                     return new AddTaskCommand(eventTask);
+                case "delete":
+                    int index3 = message.parseTaskIndex();
+                    return new DeleteCommand(index3);
                 default:
                     return new ErrorCommand("I dont understand this command!");
             }
         }
-        catch (IllegalArgumentException e) {
-            return new ErrorCommand("Empty task description!");
-        }
-        catch (MissingDateTokenException e){
+        catch (CustomException e){
             return new ErrorCommand(e.getMessage());
         }
     }
