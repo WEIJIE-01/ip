@@ -8,24 +8,17 @@ import java.time.format.DateTimeFormatter;
 public class Task {
     public String name;
     public boolean isDone = false;
-    public boolean isToDo = false;
 
     // Constructor
-    public Task(String name, boolean isToDo){
-        this.name = name;
-        this.isToDo = isToDo;
-    }
-
-    public Task(String name) {
+    public Task(String name){
         this.name = name;
     }
 
     // Returns a string containing task status
     public String toString(){
         String doneStatus = isDone ? "[X]" : "[ ]";
-        String toDoStatus = isToDo ? "[T]" : "[ ]";
         // returns [T][X] task name
-        return toDoStatus + doneStatus + " " + this.name;
+        return "[T]" + doneStatus + " " + this.name;
     }
 
     // Marks task as done

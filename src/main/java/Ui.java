@@ -41,11 +41,13 @@ public class Ui {
         }
     }
 
-
     public static void printString(String msg) {
         System.out.println(INDENTATION + msg);
     }
 
+    public static void printErrorMsg(String errorMsg) {
+        System.out.println("\n" + BOT_LABEL + " ERROR! " + errorMsg);
+    }
 
     public static void printNewTask(Task task) {
         System.out.printf("\n%s I have added a new task: %s\n", BOT_LABEL, task.name);

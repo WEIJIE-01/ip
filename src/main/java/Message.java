@@ -35,13 +35,13 @@ public class Message {
         int lastTaskNameIndex = 0;
 
         // taskName stops upon seeing /by or /st
-        for (int i=1; i < tokenLength - 1; i++) {
+        for (int i=0; i < tokenLength - 1; i++) {
             if (tokens[i].equals("/by") || tokens[i].equals("/st")){
                 lastTaskNameIndex = i;
                 break;
             }
             else {
-                lastTaskNameIndex = i+1;
+                lastTaskNameIndex = tokenLength;
             }
         }
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
@@ -53,8 +53,7 @@ public class Message {
                 return tokens[i+1];
             }
         }
-        Ui.printString("No end date found!");
-        return "";
+        throw new MissingDateTokenException("/by not found");
     }
 
     public String parseSt() {
@@ -63,8 +62,7 @@ public class Message {
                 return tokens[i+1];
             }
         }
-        Ui.printString("No start date found!");
-        return "";
+        throw new MissingDateTokenException("/st not found");
     }
 
 }
