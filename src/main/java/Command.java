@@ -7,6 +7,17 @@ abstract class Command {
     abstract void execute(ArrayList<Task> tasks);
 }
 
+// Error
+class ErrorCommand extends Command {
+    public String errorMsg;
+    public ErrorCommand(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+    void execute(ArrayList<Task> tasks) {
+        Ui.printErrorMsg(errorMsg);
+    }
+}
+
 // list
 class ListCommand extends Command {
     void execute(ArrayList<Task> tasks) {
@@ -29,6 +40,7 @@ class AddTaskCommand extends Command {
     AddTaskCommand(Task task){
         this.task = task;
     }
+
     void execute(ArrayList<Task> tasks) {
         tasks.add(task);
         Ui.printNewTask(task);
@@ -45,15 +57,23 @@ class MarkCommand extends Command {
         this.index = i;
     }
 
-    void execute(ArrayList<Task> tasks) {
+    boolean isInvalidIndex(int index, ArrayList<Task> tasks){
         if (index < 0 || index >= tasks.size()) {
             Ui.printString("Invalid index!");
+            return true;
+        }
+        return false;
+    }
+
+    void execute(ArrayList<Task> tasks) {
+        if (isInvalidIndex(index, tasks)){
             return;
         }
         Task task = tasks.get(index);
         if (task.isDone) {
             Ui.printString("Already done!");
-        } else {
+        }
+        else {
             task.markAsDone();
             Ui.showMarkSuccess(task);
         }
@@ -83,3 +103,4 @@ class UnmarkCommand extends MarkCommand {
         }
     }
 }
+

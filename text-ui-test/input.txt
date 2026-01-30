@@ -1,10 +1,14 @@
-Run
-Jump
-list
+todo run
+todo study
 mark 1
 unmark 1
 mark 2
 deadline assignment /by Fri
 event meeting /st 4pm /by 6pm
+list
+mark
+todo
+list
+deadline submission
 list
 bye
