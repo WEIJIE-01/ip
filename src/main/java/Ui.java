@@ -7,6 +7,7 @@ public class Ui {
 
     public static final String CHATBOT_NAME = "Star";
     public static final String BOT_LABEL = String.format("[%s]", CHATBOT_NAME);
+    private static final Scanner sc = new Scanner(System.in);
 
     // Prints welcome message.
     public static void printWelcomeMessage() {
@@ -17,20 +18,16 @@ public class Ui {
     }
 
     // Scans for user input.
-    public static void scanInput() {
-        Scanner sc = new Scanner(System.in);
-        while (true){
-            Message message = new Message(sc.nextLine());
-            message.parseMessage(); // splits message into tokens
-            // exits when "bye" is the first token
-            if (LogicController.run(message)){
-                break;
-            }
-        }
+    public static String scanInput() {
+        return sc.nextLine();
+    }
+
+    public static boolean hasMoreInput() {
+        return sc.hasNextLine();
     }
 
     // Prints goodbye message.
-    public static void printOutMessage(){
+    public static void printExitMessage(){
         System.out.println(BOT_LABEL + "Bye. Hope to see you again soon!");
     }
 
@@ -54,12 +51,12 @@ public class Ui {
     }
 
     public static void showMarkSuccess(Task task) {
-        System.out.println("Nice! I've marked this task as done:");
+        System.out.println(BOT_LABEL + " Nice! I've marked this task as done:");
         System.out.println(task.toString());
     }
 
     public static void showUnmarkSuccess(Task task) {
-        System.out.println("OK, I've marked this task as not done yet:");
+        System.out.println(BOT_LABEL + " OK, I've marked this task as not done yet:");
         System.out.println(task.toString());
     }
 }
