@@ -17,7 +17,7 @@ class ListCommand extends Command {
 // bye
 class ByeCommand extends Command {
     void execute(ArrayList<Task> tasks) {
-        Ui.printOutMessage();   // Prints goodbye message in UI
+        Ui.printExitMessage();   // Prints goodbye message in UI
     }
 }
 

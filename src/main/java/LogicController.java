@@ -24,19 +24,22 @@ public class LogicController {
             case "unmark":
                 int index2 = message.parseTaskIndex(message.tokens);
                 return new UnmarkCommand(index2);  // Create these classes
-            case "todo":
-                String[] todoTaskTokens = Arrays.copyOfRange(message.tokens,1,message.tokens.length);
-                Task todoTask = new Task(String.join(" ",todoTaskTokens), true);
+            case "todo": ;
+                Task todoTask = new Task(message.parseTaskName(), true);
                 return new AddTaskCommand(todoTask);
             case "deadline":
-                // Date/day expected in the last token
-                String by = message.tokens[message.tokenLength-1];
+                // Parser expects /by in message
+                String by = message.parseBy();
 
-                // Remaining tokens make up task name
-                String[] deadlineTaskTokens = Arrays.copyOfRange(message.tokens,1,message.tokens.length-1);
-
-                DeadlineTask deadlineTask = new DeadlineTask(String.join(" ",deadlineTaskTokens), by);
+                DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), by);
                 return new AddTaskCommand(deadlineTask);
+            case "event":
+                // Date/day expected be after /by and /st token
+                String byEvent = message.parseBy();
+                String stEvent = message.parseSt();
+
+                Event eventTask = new Event(message.parseTaskName(), stEvent, byEvent);
+                return new AddTaskCommand(eventTask);
             default:
                 Task defaultTask = new Task(String.join(" ", message.tokens));
                 return new AddTaskCommand(defaultTask);
