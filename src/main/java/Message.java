@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.StringJoiner;
 
 /**
  * Parses user commands into actionable parts.
@@ -22,7 +21,7 @@ public class Message {
     }
 
     // get TaskIndex from TaskList for mark and unmark
-    public int parseTaskIndex(String[] tokens) {
+    public int parseTaskIndex() {
         if (tokens.length <= 1) return -1;
         try {
             return Integer.parseInt(tokens[1].trim()) - 1;  // 1-based → 0-based
@@ -31,11 +30,13 @@ public class Message {
         }
     }
 
+    // get TaskName
+    // if empty -> throws exception
     public String parseTaskName() {
         int lastTaskNameIndex = 0;
 
         // taskName stops upon seeing /by or /st
-        for (int i=0; i < tokenLength - 1; i++) {
+        for (int i = 1; i < tokenLength; i++) {
             if (tokens[i].equals("/by") || tokens[i].equals("/st")){
                 lastTaskNameIndex = i;
                 break;
@@ -43,6 +44,9 @@ public class Message {
             else {
                 lastTaskNameIndex = tokenLength;
             }
+        }
+        if (lastTaskNameIndex == 0){
+            throw new CustomException("Empty task description!");
         }
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
     }
@@ -53,7 +57,7 @@ public class Message {
                 return tokens[i+1];
             }
         }
-        throw new MissingDateTokenException("/by not found");
+        throw new CustomException("/by not found");
     }
 
     public String parseSt() {
@@ -62,7 +66,7 @@ public class Message {
                 return tokens[i+1];
             }
         }
-        throw new MissingDateTokenException("/st not found");
+        throw new CustomException("/st not found");
     }
 
 }

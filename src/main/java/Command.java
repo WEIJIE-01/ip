@@ -18,6 +18,24 @@ class ErrorCommand extends Command {
     }
 }
 
+// Delete
+class DeleteCommand extends Command {
+    public int index;
+    public DeleteCommand(int index) {
+        this.index = index;
+    }
+    void execute(ArrayList<Task> tasks) {
+        if (index < 0 || index >= tasks.toArray().length) {
+            throw new CustomException("Invalid index");
+        }
+        Task deleteTask = tasks.get(index);
+        Ui.printDeleteTask(deleteTask);
+        Ui.printString(deleteTask.toString());
+        tasks.remove(deleteTask);
+    }
+
+}
+
 // list
 class ListCommand extends Command {
     void execute(ArrayList<Task> tasks) {
@@ -102,5 +120,7 @@ class UnmarkCommand extends MarkCommand {
             Ui.showUnmarkSuccess(task);
         }
     }
+
+
 }
 

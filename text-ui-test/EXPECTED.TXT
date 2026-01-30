@@ -43,4 +43,14 @@ What can I do for you?
        3.[D][ ] assignment (by: fri)
        4.[E][ ] meeting (by: 6pm)
 
+[Star] I have removed this task: run
+       [T][ ] run
+
+[Star] I have removed this task: assignment
+       [D][ ] assignment (by: fri)
+
+[Star] Tasklist:
+       1.[T][X] study
+       2.[E][ ] meeting (by: 6pm)
+
 [Star] Bye. Hope to see you again soon!

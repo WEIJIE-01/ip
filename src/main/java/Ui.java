@@ -53,6 +53,10 @@ public class Ui {
         System.out.printf("\n%s I have added a new task: %s\n", BOT_LABEL, task.name);
     }
 
+    public static void printDeleteTask(Task task) {
+        System.out.printf("\n%s I have removed this task: %s\n", BOT_LABEL, task.name);
+    }
+
     public static void showMarkSuccess(Task task) {
         System.out.printf("\n%s Nice! I've marked this task as done:",BOT_LABEL);
         System.out.println(task.toString());
