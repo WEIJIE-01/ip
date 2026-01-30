@@ -3,7 +3,8 @@ Jump
 list
 mark 1
 unmark 1
+mark 2
 deadline assignment /by Fri
 event meeting /st 4pm /by 6pm
 list
-mark
+bye
