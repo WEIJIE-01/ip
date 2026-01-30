@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Stores current tasks
+ * Stores all current tasks
  */
 public class TaskList {
 
