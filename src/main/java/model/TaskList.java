@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class TaskList {
 
-    public static final ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
+    public static ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
 
     // Adds task
     public static void addTask(Task task){
