@@ -14,4 +14,5 @@ list
 delete 1
 delete 2
 list
+save
 bye
