@@ -10,7 +10,7 @@ public class Ui {
     public static final String CHATBOT_NAME = "Star";
     public static final String BOT_LABEL = String.format("[%s]", CHATBOT_NAME);
     public static final String INDENTATION = "       ";
-    private static final Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     // Prints welcome message.
     public static void printWelcomeMessage() {
@@ -53,6 +53,10 @@ public class Ui {
 
     public static void printNewTask(Task task) {
         System.out.printf("\n%s I have added a new task: %s\n", BOT_LABEL, task.name);
+    }
+
+    public static void printSave() {
+        System.out.printf("\n%s Tasks Saved\n", BOT_LABEL);
     }
 
     public static void printDeleteTask(Task task) {

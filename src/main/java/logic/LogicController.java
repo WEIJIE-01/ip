@@ -3,6 +3,7 @@ package logic;
 import command.DeleteCommand;
 import command.ErrorCommand;
 import command.ListCommand;
+import command.SaveCommand;
 import command.UnmarkCommand;
 import command.MarkCommand;
 import command.ByeCommand;
@@ -58,6 +59,8 @@ public class LogicController {
                 case "delete":
                     int index3 = message.parseTaskIndex();
                     return new DeleteCommand(index3);
+                case "save":
+                    return new SaveCommand();
                 default:
                     return new ErrorCommand("I dont understand this command!");
             }

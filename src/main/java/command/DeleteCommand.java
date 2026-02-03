@@ -7,7 +7,7 @@ import ui.Ui;
 
 // Delete
 public class DeleteCommand extends Command {
-    public final int index;
+    public int index;
     
     public DeleteCommand(int index) {
         this.index = index;
