@@ -15,7 +15,7 @@ import java.nio.file.StandardOpenOption;
  */
 
 public class Storage {
-    public static final Path filePath = Paths.get("data/StarTasks.txt");
+    public static final Path filePath = Paths.get("data", "StarTasks.txt");
 
     /**
      * Creates file if file do not exist
