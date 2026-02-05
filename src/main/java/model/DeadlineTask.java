@@ -1,12 +1,14 @@
 package model;
 
+import java.time.LocalDateTime;
+
 /**
  * Creates a task with deadline denoted by /by
  */
 public class DeadlineTask extends Task {
-    public final String by;
+    public final LocalDateTime by;
 
-    public DeadlineTask(String name, String by) {
+    public DeadlineTask(String name, LocalDateTime by) {
         super(name);
         this.by = by;
     }

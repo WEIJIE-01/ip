@@ -1,14 +1,16 @@
 package model;
 
+import java.time.LocalDateTime;
+
 /**
  * Event is task with start and end date
  */
 public class Event extends DeadlineTask {
     // start in String
-    public final String st;
+    public final LocalDateTime st;
 
     // constructs event with name, start and end in String
-    public Event(String name, String st, String end) {
+    public Event(String name, LocalDateTime st, LocalDateTime end) {
         super(name, end);
         this.st = st;
     }

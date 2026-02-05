@@ -1,5 +1,7 @@
 package logic;
 
+import java.time.LocalDateTime;
+
 import command.DeleteCommand;
 import command.ErrorCommand;
 import command.ListCommand;
@@ -14,6 +16,7 @@ import model.Task;
 import model.DeadlineTask;
 import model.Event;
 import model.TaskList;
+import parser.DateTimeConverter;
 import parser.Message;
 
 /**
@@ -52,16 +55,17 @@ public class LogicController {
                 return new AddTaskCommand(todoTask);
             case "deadline":
                 // Parser expects /by in message
-                String by = message.parseBy();
-
+                String[] byEventTokens = message.parseBy();
+                LocalDateTime by = DateTimeConverter.toLocalDate(byEventTokens);
                 DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), by);
                 return new AddTaskCommand(deadlineTask);
             case "event":
                 // Date/day expected be after /by and /st token
-                String byEvent = message.parseBy();
-                String stEvent = message.parseSt();
-
-                Event eventTask = new Event(message.parseTaskName(), stEvent, byEvent);
+                String[] byEventTokens2 = message.parseBy();
+                String[] stEventTokens2 = message.parseSt();
+                LocalDateTime by2 = DateTimeConverter.toLocalDate(byEventTokens2);
+                LocalDateTime st2 = DateTimeConverter.toLocalDate(stEventTokens2);
+                Event eventTask = new Event(message.parseTaskName(), st2, by2);
                 return new AddTaskCommand(eventTask);
             case "delete":
                 int index3 = message.parseTaskIndex();
