@@ -1,16 +1,19 @@
 package model;
+
 /**
  * Event is task with start and end date
  */
 public class Event extends DeadlineTask {
-    // 3char with first letter caps to represent day "Mon", "Tue"
+    // start in String
     public final String st;
 
+    // constructs event with name, start and end in String
     public Event(String name, String st, String end) {
         super(name, end);
         this.st = st;
     }
 
+    // returns status of event in String
     @Override
     public String toString() {
         String MARKED_LABEL = "[X]";

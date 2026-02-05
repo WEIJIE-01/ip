@@ -1,7 +1,6 @@
 package model;
 
 import ui.Ui;
-
 /**
  * Task has 2 states: done and not done
  * Events are tasks with start and end date/time
@@ -10,7 +9,7 @@ public class Task {
     public final String name;
     public boolean isDone = false;
 
-    // Constructor
+    // constructs with name of task
     public Task(String name){
         this.name = name;
     }

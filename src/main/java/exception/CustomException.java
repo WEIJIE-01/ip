@@ -1,4 +1,5 @@
 package exception;
+
 /**
  * Handles missing /st and /by errors
  */

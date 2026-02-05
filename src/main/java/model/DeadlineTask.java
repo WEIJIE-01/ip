@@ -1,4 +1,8 @@
 package model;
+
+/**
+ * Creates a task with deadline denoted by /by
+ */
 public class DeadlineTask extends Task {
     public final String by;
 
@@ -7,6 +11,7 @@ public class DeadlineTask extends Task {
         this.by = by;
     }
 
+    // returns status of the task in String
     @Override
     public String toString() {
         String MARKED_LABEL = "[X]";

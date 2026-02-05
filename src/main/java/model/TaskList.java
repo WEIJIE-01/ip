@@ -9,18 +9,24 @@ public class TaskList {
 
     public static ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
 
-    // Adds task
+    // adds task
     public static void addTask(Task task){
         tasks.add(task);
     }
 
+    // gets task
     public static Task getTask(int taskIndex){
         return tasks.get(taskIndex);
     }
 
-    // Returns number of existing tasks
+    // returns number of existing tasks
     public static int getSize(){
         return tasks.size();
+    }
+
+    // removes task from tasks based on index
+    public static void remove(Task task) {
+        tasks.remove(task);
     }
 
 }

@@ -6,15 +6,19 @@ import model.Task;
 import model.TaskList;
 import ui.Ui;
 
-// New Task
+/**
+ * Adds new task into tasklist
+ */
 public class AddTaskCommand extends Command {
     public final Task task;
 
-    // Constructor
+    // constructs new Task
     public AddTaskCommand(Task task){
         this.task = task;
     }
-    
+
+    // adds task to tasklist
+    // prints the task status
     @Override
     public void execute(ArrayList<Task> tasks) {
         TaskList.addTask(task);

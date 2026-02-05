@@ -2,15 +2,15 @@ package parser;
 
 import java.util.Arrays;
 import exception.CustomException;
-
 /**
- * Parses user commands into actionable parts.
+ * Parses user commands into tokens
  */
 public class Message {
     final String message;
     public final String[] tokens;
     public final int tokenLength;
-    // Constructor
+
+    // constructs with String input message
     public Message(String message) {
         this.message = message;
         this.tokens = this.parseMessage();
@@ -51,6 +51,7 @@ public class Message {
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
     }
 
+    // checks for /by and return end date/time as String
     public String parseBy() {
         for (int i=0; i < tokenLength - 1 ; i++) {
             if (tokens[i].equals("/by")) {
@@ -60,6 +61,7 @@ public class Message {
         throw new CustomException("/by not found");
     }
 
+    // checks for /st and return start date/time as String
     public String parseSt() {
         for (int i=0; i < tokenLength - 1 ; i++) {
             if (tokens[i].equals("/st")) {

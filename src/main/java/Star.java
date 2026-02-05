@@ -1,6 +1,10 @@
 import ui.Ui;
 import logic.LogicController;
 import parser.Message;
+
+/**
+ * Main file that scans for input from UI
+ */
 public class Star {
     public static void main(String[] args) {
         Ui.printWelcomeMessage();   // Prints welcome message in UI

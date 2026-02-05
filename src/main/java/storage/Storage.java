@@ -1,8 +1,5 @@
 package storage;
 
-import model.Task;
-import model.TaskList;
-import ui.Ui;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,17 +7,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import model.Task;
+import model.TaskList;
+import ui.Ui;
 /**
- * Saves current instance of tasklist into txt
+ * Saves current instance of tasklist into data/StarTasks.txt
  */
 
 public class Storage {
     public static final Path filePath = Paths.get("data", "StarTasks.txt");
 
-    /**
-     * Creates file if file do not exist
-     * @throws IOException if unable to create file
-     */
+    // Creates file if file do not exist
+    // @throws IOException if unable to create file
     public static void createFile() throws IOException {
         Files.createDirectories(filePath.getParent());
         if (!Files.exists(filePath)) {
@@ -29,10 +27,8 @@ public class Storage {
         }
     }
 
-    /**
-     * Appends the file by using Tasklist
-     * @throws IOException if unable to create file
-     */
+    // appends the file by using Tasklist
+    // @throws IOException if unable to create file
     public static void save() throws IOException {
         createFile();
         try (BufferedWriter writer = Files.newBufferedWriter(

@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import model.Task;
 import ui.Ui;
 
-// unmark
+/**
+ * Unmarks the task from done to not done
+ */
 public class UnmarkCommand extends MarkCommand {
 
-    // Constructor
+    // constructs using task index in taskList
     public UnmarkCommand(int i) {
         super(i);
     }
 
+    // checks if the index is valid
+    // marks the task as not done and print task status to show changes
+    // warns the user if the task is originally not done
     @Override
     public void execute(ArrayList<Task> tasks) {
         if (index < 0 || index >= tasks.size()) {
