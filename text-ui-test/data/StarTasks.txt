@@ -8,3 +8,12 @@
 [E][ ] meeting (st 4pm | by: 6pm)
 [T][X] study
 [E][ ] meeting (st 4pm | by: 6pm)
+[T][X] study
+[E][ ] meeting (st 4pm | by: 6pm)
+[T][X] study
+[T][X] study
+[E][ ] meeting (st 2026-02-05T14:00 | by: 2026-02-05T16:00)
+[T][X] study
+[E][ ] meeting (st 2026-02-05T14:00 | by: 2026-02-05T16:00)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)

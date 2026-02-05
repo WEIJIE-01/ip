@@ -1,5 +1,6 @@
 package parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import exception.CustomException;
 /**
@@ -52,23 +53,31 @@ public class Message {
     }
 
     // checks for /by and return end date/time as String
-    public String parseBy() {
+    public String[] parseBy() {
         for (int i=0; i < tokenLength - 1 ; i++) {
             if (tokens[i].equals("/by")) {
-                return tokens[i+1];
+                return Arrays.copyOfRange(tokens, i+1, tokenLength);
             }
         }
         throw new CustomException("/by not found");
     }
 
     // checks for /st and return start date/time as String
-    public String parseSt() {
+    public String[] parseSt() {
+        int stIndex = 0;
+        int byIndex = tokenLength;
         for (int i=0; i < tokenLength - 1 ; i++) {
             if (tokens[i].equals("/st")) {
-                return tokens[i+1];
+                stIndex = i + 1;
+            }
+            if (tokens[i].equals("/by")) {
+                byIndex = i;
             }
         }
-        throw new CustomException("/st not found");
+        if (stIndex==0) {
+            throw new CustomException("/st not found");
+        }
+        return Arrays.copyOfRange(tokens, stIndex, byIndex);
     }
 
 }
