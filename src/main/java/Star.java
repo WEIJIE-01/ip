@@ -1,3 +1,5 @@
+package seedu.star;
+
 import ui.Ui;
 import logic.LogicController;
 import parser.Message;
