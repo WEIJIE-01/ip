@@ -25,8 +25,8 @@ import parser.Message;
 public class LogicController {
 
     /**
-     * skips if empty input
-     * creates command and execute until "bye" is given
+     * Skips if empty input
+     * Creates command and execute until "bye" is given
      * @param message, input from user
      * @return true to exit
      */

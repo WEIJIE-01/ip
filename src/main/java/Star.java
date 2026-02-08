@@ -8,6 +8,11 @@ import parser.Message;
  * Main file that scans for input from UI
  */
 public class Star {
+    /**
+     * Main to scan for user input iteratively
+     * Exits when "bye" is input
+     * @param args String[]
+     */
     public static void main(String[] args) {
         Ui.printWelcomeMessage();   // Prints welcome message in UI
 
