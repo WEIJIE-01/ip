@@ -34,6 +34,6 @@ public class Event extends DeadlineTask {
         String byString = this.by.format(DateTimeFormatter.ofPattern("MMM/d/yyyy"));
         String stString = this.st.format(DateTimeFormatter.ofPattern("MMM/d/yyyy"));
         // returns [D][X] task name
-        return String.format("[E]%s %s (st %s | by: %s)",doneStatus, this.name, stString, byString);
+        return String.format("[E]%s %s (st %s | by: %s)", doneStatus, this.name, stString, byString);
     }
 }

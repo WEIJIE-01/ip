@@ -34,8 +34,8 @@ public class Ui {
     }
 
     // prints goodbye message.
-    public static void printExitMessage(){
-        System.out.printf("\n%s Bye. Hope to see you again soon!",BOT_LABEL);
+    public static void printExitMessage() {
+        System.out.printf("\n%s Bye. Hope to see you again soon!", BOT_LABEL);
     }
 
     // prints all task
