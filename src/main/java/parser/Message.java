@@ -1,6 +1,5 @@
 package parser;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import exception.CustomException;
 /**
@@ -11,20 +10,29 @@ public class Message {
     public final String[] tokens;
     public final int tokenLength;
 
-    // constructs with String input message
+    /**
+     * constructs with String input message
+     * @param message, user input
+     */
     public Message(String message) {
         this.message = message;
         this.tokens = this.parseMessage();
         this.tokenLength = tokens.length;
     }
 
-    // Parses command and extracts task index (0-based).
+    /**
+     * Parses command and extracts task index (0-based)
+     * @return tokens of parsed message
+     */
     public String[] parseMessage() {
         String trimmedMessage = this.message.trim().toLowerCase();
         return trimmedMessage.split(" ");
     }
 
-    // get TaskIndex from TaskList for mark and unmark
+     /**
+     * get TaskIndex from TaskList for mark and unmark
+     * @return Task index
+     */
     public int parseTaskIndex() {
         if (tokens.length <= 1) return -1;
         try {
@@ -34,8 +42,11 @@ public class Message {
         }
     }
 
-    // get TaskName
-    // if empty -> throws exception
+    /**
+     * get TaskName
+     * if empty -> throws exception
+     * @return Task name
+     */
     public String parseTaskName() {
         int lastTaskNameIndex = tokenLength;
 
@@ -52,7 +63,10 @@ public class Message {
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
     }
 
-    // checks for /by and return end date/time as String
+    /**
+     * checks for /by and return end date/time as String
+     * @return tokens for end date
+     */
     public String[] parseBy() {
         for (int i=0; i < tokenLength - 1 ; i++) {
             if (tokens[i].equals("/by")) {
@@ -62,7 +76,10 @@ public class Message {
         throw new CustomException("/by not found");
     }
 
-    // checks for /st and return start date/time as String
+    /**
+     * checks for /st and return start date/time as String
+     * @return tokens for start date
+     */
     public String[] parseSt() {
         int stIndex = 0;
         int byIndex = tokenLength;

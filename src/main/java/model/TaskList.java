@@ -9,22 +9,35 @@ public class TaskList {
 
     public static ArrayList<Task> tasks = new ArrayList<>(100); //Maximum 100 tasks
 
-    // adds task
+    /**
+     * adds task
+     * @param task, Task object
+     */
     public static void addTask(Task task){
         tasks.add(task);
     }
 
-    // gets task
+    /**
+     * Getter
+     * @param taskIndex, task index in TaskList
+     * @return task, Task object
+     */
     public static Task getTask(int taskIndex){
         return tasks.get(taskIndex);
     }
 
-    // returns number of existing tasks
+    /**
+     * Get the size of the tasklist
+     * @return size of TaskList
+     */
     public static int getSize(){
         return tasks.size();
     }
 
-    // removes task from tasks based on index
+    /**
+     * Removes the task from TaskList
+     * @param task, Task object
+     */
     public static void remove(Task task) {
         tasks.remove(task);
     }

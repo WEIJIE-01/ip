@@ -9,7 +9,10 @@ public class Task {
     public final String name;
     public boolean isDone = false;
 
-    // constructs with name of task
+    /**
+     * Constructs a task
+     * @param name, name of task
+     */
     public Task(String name){
         this.name = name;
     }

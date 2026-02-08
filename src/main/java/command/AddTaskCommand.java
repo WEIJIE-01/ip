@@ -12,13 +12,17 @@ import ui.Ui;
 public class AddTaskCommand extends Command {
     public final Task task;
 
-    // constructs new Task
+    /**
+     * constructs new Task
+     */
     public AddTaskCommand(Task task){
         this.task = task;
     }
 
-    // adds task to tasklist
-    // prints the task status
+    /**
+     * adds task to tasklist
+     * prints the task status
+      */
     @Override
     public void execute(ArrayList<Task> tasks) {
         TaskList.addTask(task);

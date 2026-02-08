@@ -24,9 +24,12 @@ import parser.Message;
  */
 public class LogicController {
 
-    // skips if empty input
-    // creates command and execute
-    // returns true if input is bye
+    /**
+     * skips if empty input
+     * creates command and execute until "bye" is given
+     * @param message, input from user
+     * @return true to exit
+     */
     public static boolean run(Message message) {
         if (message.tokenLength == 0) {
             return false;
@@ -36,7 +39,11 @@ public class LogicController {
         return message.tokens[0].equals("bye");
     }
 
-    // returns new Command based on the first token in input
+    /**
+     *
+     * @param message, input from user
+     * @return Command based on the first token in input
+     */
     private static Command createCommand(Message message) {
         try{
             switch (message.tokens[0]) {
