@@ -41,12 +41,12 @@ public class Message {
 
         // taskName stops upon seeing /by or /st
         for (int i = 1; i < tokenLength; i++) {
-            if (tokens[i].equals("/by") || tokens[i].equals("/st")){
+            if (tokens[i].equals("/by") || tokens[i].equals("/st")) {
                 lastTaskNameIndex = i;
                 break;
             }
         }
-        if (lastTaskNameIndex <= 1){
+        if (lastTaskNameIndex <= 1) {
             throw new CustomException("Empty task description!");
         }
         return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));

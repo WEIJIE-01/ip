@@ -23,6 +23,6 @@ public class DeadlineTask extends Task {
         String doneStatus = this.isDone ? MARKED_LABEL : UNMARKED_LABEL;
         String byString = this.by.format(DateTimeFormatter.ofPattern("MMM/d/yyyy"));
         // returns [D][X] task name
-        return String.format("[D]%s %s (by: %s)",doneStatus, this.name, byString);
+        return String.format("[D]%s %s (by: %s)", doneStatus, this.name, byString);
     }
 }
