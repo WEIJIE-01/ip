@@ -8,7 +8,8 @@ What can I do for you?
 [Star] I have added a new task: assignment cs2103de
        [T][ ] assignment cs2103de
 
-[Star] Nice! I've marked this task as done:[T][X] run
+[Star] Nice! I've marked this task as done:
+       [T][X] run
 
 [Star] OK, I've marked this task as not done yet:[T][ ] run
 
@@ -65,5 +66,9 @@ What can I do for you?
        1.[T][X] assignment cs2103de
        2.[D][ ] ee4308 assignment (by: Feb/5/2026)
        3.[D][ ] cs2103de assignment (by: Feb/8/2026)
+
+
+[Star] Either you run the day or the day runs you.
+                                        - Jim Rohn
 
 [Star] Bye. Hope to see you again soon!

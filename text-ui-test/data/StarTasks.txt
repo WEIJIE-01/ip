@@ -20,4 +20,16 @@
 [T][X] study
 [E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
 [T][X] assignment cs2103de
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
 [E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)

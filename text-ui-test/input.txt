@@ -18,4 +18,6 @@ save
 deadline EE4308 assignment /by 2026-02-05
 deadline CS2103DE assignment /by 2026-02-08
 find assignment
+cheer
 bye
+todo sleep

@@ -25,6 +25,6 @@ public class ErrorCommand extends Command {
      */
     @Override
     public void execute(ArrayList<Task> tasks) {
-        Ui.printErrorMsg(errorMsg);
+        Ui.printBotString(" ERROR! " + errorMsg);
     }
 }

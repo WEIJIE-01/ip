@@ -2,6 +2,7 @@ package logic;
 
 import java.time.LocalDateTime;
 
+import command.CheerCommand;
 import command.DeleteCommand;
 import command.ErrorCommand;
 import command.FindCommand;
@@ -80,9 +81,14 @@ public class LogicController {
                 return new DeleteCommand(index3);
             case "save":
                 return new SaveCommand();
+<<<<<<< HEAD
             case "find":
                 String keyword = message.parseTaskName();
                 return new FindCommand(keyword);
+=======
+            case "cheer":
+                return new CheerCommand();
+>>>>>>> 27805c0 (Added cheer feature)
             default:
                 return new ErrorCommand("I dont understand this command!");
             }
