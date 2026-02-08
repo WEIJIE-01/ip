@@ -2,6 +2,7 @@ package logic;
 
 import java.time.LocalDateTime;
 
+import command.CheerCommand;
 import command.DeleteCommand;
 import command.ErrorCommand;
 import command.ListCommand;
@@ -72,6 +73,8 @@ public class LogicController {
                 return new DeleteCommand(index3);
             case "save":
                 return new SaveCommand();
+            case "cheer":
+                return new CheerCommand();
             default:
                 return new ErrorCommand("I dont understand this command!");
             }

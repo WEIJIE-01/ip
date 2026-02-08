@@ -22,7 +22,7 @@ public class AddTaskCommand extends Command {
     @Override
     public void execute(ArrayList<Task> tasks) {
         TaskList.addTask(task);
-        Ui.printNewTask(task);
+        Ui.printBotString(String.format(" I have added a new task: %s\n", task.name));
         Ui.printString(task.toString());
     }
 }

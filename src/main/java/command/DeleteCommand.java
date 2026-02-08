@@ -18,7 +18,7 @@ public class DeleteCommand extends Command {
     }
 
     // checks if index is valid in TaskList
-    public boolean isInvalidIndex(int index, ArrayList<Task> tasks){
+    public boolean isInvalidIndex(int index){
         if (index < 0 || index >= TaskList.getSize()) {
             Ui.printString("\nInvalid index");
             return true;
@@ -30,11 +30,11 @@ public class DeleteCommand extends Command {
     // deletes task from taskList
     @Override
     public void execute(ArrayList<Task> tasks) {
-        if (isInvalidIndex(index, tasks)) {
+        if (isInvalidIndex(index)) {
             return;
         }
         Task deleteTask = TaskList.getTask(index);
-        Ui.printDeleteTask(deleteTask);
+        Ui.printBotString(String.format(" I have removed this task: %s\n", deleteTask.name));
         Ui.printString(deleteTask.toString());
         TaskList.remove(deleteTask);
     }

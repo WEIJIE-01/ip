@@ -3,21 +3,27 @@ What can I do for you?
 
 
 [Star] I have added a new task: run
+
        [T][ ] run
 
 [Star] I have added a new task: study
+
        [T][ ] study
 
-[Star] Nice! I've marked this task as done:[T][X] run
+[Star] Nice! I've marked this task as done:
+       [T][X] run
 
-[Star] OK, I've marked this task as not done yet:[T][ ] run
+[Star] OK, I've marked this task as not done yet:
 
-[Star] Nice! I've marked this task as done:[T][X] study
+[Star] Nice! I've marked this task as done:
+       [T][X] study
 
 [Star] I have added a new task: assignment
+
        [D][ ] assignment (by: Feb/5/2026)
 
 [Star] I have added a new task: meeting
+
        [E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
 
 [Star] Tasklist:
@@ -44,9 +50,11 @@ What can I do for you?
        4.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
 
 [Star] I have removed this task: run
+
        [T][ ] run
 
 [Star] I have removed this task: assignment
+
        [D][ ] assignment (by: Feb/5/2026)
 
 [Star] Tasklist:
@@ -54,5 +62,9 @@ What can I do for you?
        2.[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
 
 [Star] Tasks Saved
+
+
+[Star] Either you run the day or the day runs you.
+                                        - Jim Rohn
 
 [Star] Bye. Hope to see you again soon!

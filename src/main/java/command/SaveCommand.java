@@ -19,10 +19,10 @@ public class SaveCommand extends Command {
     public void execute(ArrayList<Task> tasks){
         try {
             Storage.save();
-            Ui.printSave();
+            Ui.printBotString(" Tasks Saved\n");
         }
         catch (IOException e) {
-            Ui.printErrorMsg("Unable to save file " + e.getMessage());
+            Ui.printBotString(" Unable to save file " + e.getMessage());
         }
     }
 }

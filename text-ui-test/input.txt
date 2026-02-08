@@ -15,4 +15,6 @@ delete 1
 delete 2
 list
 save
+cheer
 bye
+todo sleep

@@ -29,7 +29,7 @@ public class UnmarkCommand extends MarkCommand {
             Ui.printString("Already not done");
         } else {
             task.unmarkAsDone();
-            Ui.showUnmarkSuccess(task);
+            Ui.printBotString(" OK, I've marked this task as not done yet:");
         }
     }
 
