@@ -11,6 +11,6 @@ import ui.Ui;
 public class ListCommand extends Command {
     @Override
     public void execute(ArrayList<Task> tasks) {
-        Ui.printTasks();
+        Ui.printTasks(" Tasklist:", tasks);
     }
 }

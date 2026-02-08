@@ -11,8 +11,8 @@ import ui.Ui;
 public class UnmarkCommand extends MarkCommand {
 
     // constructs using task index in taskList
-    public UnmarkCommand(int i) {
-        super(i);
+    public UnmarkCommand(int taskIndex) {
+        super(taskIndex);
     }
 
     // checks if the index is valid

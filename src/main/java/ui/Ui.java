@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import model.TaskList;
@@ -34,16 +36,17 @@ public class Ui {
     }
 
     // prints goodbye message.
-    public static void printExitMessage(){
-        System.out.printf("\n%s Bye. Hope to see you again soon!",BOT_LABEL);
+    public static void printExitMessage() {
+        System.out.printf("\n%s Bye. Hope to see you again soon!", BOT_LABEL);
     }
 
     // prints all task
-    public static void printTasks() {
-        System.out.println("\n" + BOT_LABEL + " Tasklist:");
-        for (int i = 0; i < TaskList.getSize(); i++) {
-            Task task = TaskList.getTask(i);
-            System.out.printf("%s%d.%s\n",INDENTATION, i + 1, task.toString());
+    public static void printTasks(String message, ArrayList<Task> tasks) {
+//        System.out.println("\n" + BOT_LABEL + " Tasklist:");
+        System.out.println("\n" + BOT_LABEL + message);
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            System.out.printf("%s%d.%s\n", INDENTATION, i + 1, task.toString());
         }
     }
 
@@ -74,13 +77,13 @@ public class Ui {
 
     // prints to inform task has been marked to done
     public static void showMarkSuccess(Task task) {
-        System.out.printf("\n%s Nice! I've marked this task as done:",BOT_LABEL);
+        System.out.printf("\n%s Nice! I've marked this task as done:", BOT_LABEL);
         System.out.println(task.toString());
     }
 
     // prints to inform task has been unmarked to not done
     public static void showUnmarkSuccess(Task task) {
-        System.out.printf("\n%s OK, I've marked this task as not done yet:",BOT_LABEL);
+        System.out.printf("\n%s OK, I've marked this task as not done yet:", BOT_LABEL);
         System.out.println(task.toString());
     }
 }

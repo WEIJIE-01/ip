@@ -29,4 +29,19 @@ public class TaskList {
         tasks.remove(task);
     }
 
+    /**
+     * Finds task names in tasks for keyword
+     * @param keyword String input by users
+     * @return ArrayList of tasks that contains keyword
+     */
+    public static ArrayList<Task> find(String keyword) {
+        ArrayList<Task> hitTasks = new ArrayList<>();
+        for (int i=0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if (task.name.contains(keyword)) {
+                hitTasks.add(task);
+            }
+        }
+        return hitTasks;
+    }
 }

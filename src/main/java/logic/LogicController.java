@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import command.DeleteCommand;
 import command.ErrorCommand;
+import command.FindCommand;
 import command.ListCommand;
 import command.SaveCommand;
 import command.UnmarkCommand;
@@ -72,6 +73,9 @@ public class LogicController {
                 return new DeleteCommand(index3);
             case "save":
                 return new SaveCommand();
+            case "find":
+                String keyword = message.parseTaskName();
+                return new FindCommand(keyword);
             default:
                 return new ErrorCommand("I dont understand this command!");
             }
