@@ -12,10 +12,10 @@ public class UnmarkCommand extends MarkCommand {
 
     /**
      * Constructs new MarkCommand
-     * @param i, task index in taskList
+     * @param taskIndex, task index in taskList
      */
-    public UnmarkCommand(int i) {
-        super(i);
+    public UnmarkCommand(int taskIndex) {
+        super(taskIndex);
     }
 
     /**
