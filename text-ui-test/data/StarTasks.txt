@@ -17,3 +17,7 @@
 [E][ ] meeting (st 2026-02-05T14:00 | by: 2026-02-05T16:00)
 [T][X] study
 [E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] study
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
+[T][X] assignment cs2103de
+[E][ ] meeting (st Feb/5/2026 | by: Feb/5/2026)
