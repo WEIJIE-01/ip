@@ -26,7 +26,7 @@ public class AddTaskCommand extends Command {
     @Override
     public void execute(ArrayList<Task> tasks) {
         TaskList.addTask(task);
-        Ui.printBotString(String.format(" I have added a new task: %s\n", task.name));
+        Ui.printBotString(String.format(" I have added a new task: %s", task.name));
         Ui.printString(task.toString());
     }
 }
