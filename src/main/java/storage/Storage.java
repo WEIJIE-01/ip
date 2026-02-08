@@ -10,20 +10,20 @@ import java.nio.file.StandardOpenOption;
 import model.Task;
 import model.TaskList;
 import ui.Ui;
+
 /**
  * Saves current instance of tasklist into data/StarTasks.txt
  */
-
 public class Storage {
-    public static final Path filePath = Paths.get("data", "StarTasks.txt");
+    public static final Path FILE_PATH = Paths.get("data", "StarTasks.txt");
 
     // Creates file if file do not exist
     // @throws IOException if unable to create file
     public static void createFile() throws IOException {
-        Files.createDirectories(filePath.getParent());
-        if (!Files.exists(filePath)) {
-            Files.createFile(filePath);
-            Ui.printString(String.format("\n%sStorage (%s) created",Ui.BOT_LABEL,filePath));
+        Files.createDirectories(FILE_PATH.getParent());
+        if (!Files.exists(FILE_PATH)) {
+            Files.createFile(FILE_PATH);
+            Ui.printString(String.format("\n%sStorage (%s) created",Ui.BOT_LABEL,FILE_PATH));
         }
     }
 
@@ -32,7 +32,7 @@ public class Storage {
     public static void save() throws IOException {
         createFile();
         try (BufferedWriter writer = Files.newBufferedWriter(
-            filePath, StandardOpenOption.APPEND,
+            FILE_PATH, StandardOpenOption.APPEND,
             StandardOpenOption.WRITE)) {
             for (int i = 0; i < TaskList.getSize(); i++) {
                 Task task = TaskList.getTask(i);
