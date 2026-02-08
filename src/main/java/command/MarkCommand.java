@@ -50,7 +50,8 @@ public class MarkCommand extends Command {
         }
         else {
             task.markAsDone();
-            Ui.showMarkSuccess(task);
+            Ui.printBotString(" Nice! I've marked this task as done:");
+            Ui.printString(task.toString());
         }
     }
 }
