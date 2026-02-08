@@ -10,14 +10,20 @@ import ui.Ui;
  */
 public class UnmarkCommand extends MarkCommand {
 
-    // constructs using task index in taskList
+    /**
+     * Constructs new MarkCommand
+     * @param i, task index in taskList
+     */
     public UnmarkCommand(int i) {
         super(i);
     }
 
-    // checks if the index is valid
-    // marks the task as not done and print task status to show changes
-    // warns the user if the task is originally not done
+    /**
+     * run isInvalidIndex to check if index is valid
+     * marks the task as done and print task status to show changes
+     * warns the user if the task is originally not done
+     * @param tasks, tasklist
+     */
     @Override
     public void execute(ArrayList<Task> tasks) {
         if (index < 0 || index >= tasks.size()) {

@@ -10,13 +10,21 @@ public class Event extends DeadlineTask {
     // start in String
     public final LocalDateTime st;
 
-    // constructs event with name, start and end in String
+    /**
+     * Constructs an event
+     * @param name, name of event
+     * @param st, start date time
+     * @param end, end date time
+     */
     public Event(String name, LocalDateTime st, LocalDateTime end) {
         super(name, end);
         this.st = st;
     }
 
-    // returns status of event in String
+    /**
+     * Creates a customised toString that shows status, start and end date, task name
+     * @return toString of the task
+     */
     @Override
     public String toString() {
         String MARKED_LABEL = "[X]";

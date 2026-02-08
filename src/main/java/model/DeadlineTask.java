@@ -15,6 +15,11 @@ public class DeadlineTask extends Task {
     }
 
     // returns status of the task in String
+
+    /**
+     * Creates a customised toString that shows status, deadline date and task name
+     * @return toString of the task
+     */
     @Override
     public String toString() {
         String MARKED_LABEL = "[X]";

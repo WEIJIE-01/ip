@@ -11,12 +11,20 @@ import ui.Ui;
 public class MarkCommand extends Command {
     public final int index;
 
-    // construct with task index in taskList
+    /**
+     * Constructs new MarkCommand
+     * @param i, task index in taskList
+     */
     public MarkCommand(int i) {
         this.index = i;
     }
 
-    // checks if the index is valid
+    /**
+     * Checks if the task index is valid in TaskList
+     * @param index, task index in TaskList
+     * @param tasks, TaskList
+     * @return true if invalid index
+     */
     public boolean isInvalidIndex(int index, ArrayList<Task> tasks){
         if (index < 0 || index >= tasks.size()) {
             Ui.printString("Invalid index!");
@@ -25,9 +33,12 @@ public class MarkCommand extends Command {
         return false;
     }
 
-    // run isInvalidIndex to check if index is valid
-    // marks the task as done and print task status to show changes
-    // warns the user if the task has already been done
+    /**
+     * run isInvalidIndex to check if index is valid
+     * marks the task as done and print task status to show changes
+     * warns the user if the task has already been done
+     * @param tasks, tasklist
+     */
     @Override
     public void execute(ArrayList<Task> tasks) {
         if (isInvalidIndex(index, tasks)){

@@ -12,9 +12,11 @@ import ui.Ui;
  */
 public class SaveCommand extends Command {
 
-    // tries to save txt file
-    // catches the exception thrown by save()
-    // Prints the
+    /**
+     * tries to save txt file
+     * catches the exception thrown by save()
+     * @param tasks, TaskList
+     */
     @Override
     public void execute(ArrayList<Task> tasks){
         try {
