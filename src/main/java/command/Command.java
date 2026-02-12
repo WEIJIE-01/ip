@@ -11,5 +11,5 @@ import ui.Ui;
  * Different commands have different executions
  */
 public abstract class Command {
-    public abstract void execute(ArrayList<Task> tasks);
+    public abstract String execute();
 }

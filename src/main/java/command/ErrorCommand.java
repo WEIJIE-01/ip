@@ -21,10 +21,10 @@ public class ErrorCommand extends Command {
 
     /**
      * print error message
-     * @param tasks, tasklist
+     * @return String error message
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        Ui.printBotString(" ERROR! " + errorMsg);
+    public String  execute() {
+        return  Ui.printBotString(" ERROR! " + errorMsg);
     }
 }

@@ -3,6 +3,7 @@ package command;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import exception.CustomException;
 import model.Task;
 import storage.Storage;
 import ui.Ui;
@@ -13,18 +14,19 @@ import ui.Ui;
 public class SaveCommand extends Command {
 
     /**
-     * tries to save txt file
-     * catches the exception thrown by save()
-     * @param tasks, TaskList
+     * Tries to save txt file.
+     * Catches the exception thrown by save().
+     * @return String stating save was successful
+     * @throws CustomException if save was not successful
      */
     @Override
-    public void execute(ArrayList<Task> tasks){
+    public String execute() throws CustomException {
         try {
             Storage.save();
-            Ui.printBotString(" Tasks Saved\n");
+            return Ui.printBotString(" Tasks Saved\n");
         }
         catch (IOException e) {
-            Ui.printBotString(" Unable to save file " + e.getMessage());
+            throw new CustomException(" Unable to save file " + e.getMessage());
         }
     }
 }

@@ -43,28 +43,29 @@ public class Ui {
     }
 
     /**
-     * Prints goodbye message.
+     * @return exit message, String
      */
-    public static void printExitMessage() {
-        System.out.printf("\n%s Bye. Hope to see you again soon!", BOT_LABEL);
+    public static String printExitMessage() {
+        return String.format("\n%s Bye. Hope to see you again soon!", BOT_LABEL);
     }
 
     /**
-     * Prints all task.
+     * @return output String that shows status of all existing task
      */
-    public static void printTasks() {
-        printBotString(" Tasklist:");
-        for (int i = 0; i < TaskList.getSize(); i++) {
-            Task task = TaskList.getTask(i);
-            printString(String.format("%d.%s",i + 1, task.toString()));
+    public static String printTasks(String msg, ArrayList<Task> tasks) {
+        String output = msg + "\n";
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            output = output.concat(String.format("%d.%s\n",i + 1, task.toString()));
         }
+        return output;
     }
 
     /**
      * Prints any string.
      */
-    public static void printString(String msg) {
-        System.out.println(INDENTATION + msg);
+    public static String printString(String msg) {
+        return INDENTATION + msg + "\n";
     }
 
 
@@ -72,7 +73,7 @@ public class Ui {
      * Print strings starting with bot label
      * @param msg String to print out
      */
-    public static void printBotString(String msg) {
-        System.out.println("\n" + BOT_LABEL + msg);
+    public static String printBotString(String msg) {
+        return BOT_LABEL + msg;
     }
 }

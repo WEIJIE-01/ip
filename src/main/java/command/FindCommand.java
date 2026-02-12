@@ -27,12 +27,12 @@ public class FindCommand extends Command {
 
     /**
      * Searches TaskList for task names with matching keyword
-     * @param tasks TaskList to find matching task with keyword
+     * @returns list of matching tasks
      */
     @Override
-    public void execute(ArrayList<Task> tasks){
+    public String execute(){
         ArrayList<Task> matchingTasks = TaskList.find(keyword);
-        Ui.printTasks(" Here are the matching tasks in your list:", matchingTasks);
+        return Ui.printTasks(" Here are the matching tasks in your list:", matchingTasks);
     }
 
 }

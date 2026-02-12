@@ -28,8 +28,8 @@ public class CheerCommand extends Command{
      * Ui prints quote
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        Ui.printBotString(this.quote);
+    public String execute() {
+        return Ui.printBotString(this.quote);
     }
 
 }

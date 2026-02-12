@@ -24,9 +24,10 @@ public class AddTaskCommand extends Command {
      * prints the task status
       */
     @Override
-    public void execute(ArrayList<Task> tasks) {
+    public String execute() {
         TaskList.addTask(task);
-        Ui.printBotString(String.format(" I have added a new task: %s", task.name));
-        Ui.printString(task.toString());
+        String out = String.format(" I have added a new task: %s\n", task.name);
+        out = out + task;
+        return out;
     }
 }

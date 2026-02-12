@@ -2,7 +2,9 @@ package command;
 
 import java.util.ArrayList;
 
+import exception.CustomException;
 import model.Task;
+import model.TaskList;
 import ui.Ui;
 
 /**
@@ -22,21 +24,24 @@ public class UnmarkCommand extends MarkCommand {
      * run isInvalidIndex to check if index is valid
      * marks the task as done and print task status to show changes
      * warns the user if the task is originally not done
-     * @param tasks, tasklist
+     * @return out, String to the gui
+     * @throw CustomException stating invalid index
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        if (index < 0 || index >= tasks.size()) {
-            Ui.printString("Invalid index!");
-            return;
+    public String execute() throws CustomException {
+        String out;
+        if (index < 0 || index >= TaskList.getSize()) {
+            throw new CustomException("Invalid Index!");
         }
-        Task task = tasks.get(index);
+        Task task = TaskList.getTask(index);
         if (!task.isDone) {
-            Ui.printString("Already not done");
+            out = Ui.printString("Already not done");
         } else {
             task.unmarkAsDone();
-            Ui.printBotString(" OK, I've marked this task as not done yet:");
+            out = Ui.printBotString("OK, I've marked this task as not done yet:");
+            out += Ui.printString(task.toString());
         }
+        return out;
     }
 
 
