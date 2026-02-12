@@ -3,6 +3,7 @@ package command;
 import java.util.ArrayList;
 
 import model.Task;
+import model.TaskList;
 import ui.Ui;
 
 /**
@@ -10,11 +11,11 @@ import ui.Ui;
  */
 public class ListCommand extends Command {
     /**
-     * Calls Ui.printTasks() to print task.toString
-     * @param tasks, tasklist
+     * Calls Ui.printTasks() to print task.toString.
+     * return String containing list of task
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        Ui.printTasks(" Tasklist:", tasks);
+    public String execute() {
+        return Ui.printTasks(" Tasklist:", TaskList.tasks);
     }
 }

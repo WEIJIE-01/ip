@@ -2,6 +2,7 @@ package command;
 
 import java.util.ArrayList;
 
+import exception.CustomException;
 import model.Task;
 import model.TaskList;
 import ui.Ui;
@@ -20,9 +21,8 @@ public class DeleteCommand extends Command {
     /**
      * checks if index is valid in TaskList
      */
-    public boolean isInvalidIndex(int index){
+    public boolean isInvalidIndex(int index) {
         if (index < 0 || index >= TaskList.getSize()) {
-            Ui.printString("\nInvalid index");
             return true;
         }
         return false;
@@ -32,17 +32,19 @@ public class DeleteCommand extends Command {
     /**
      * runs isInvalid
      * deletes task from taskList
-     * @param tasks, tasklist
+     * @return out String message to the user
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
+    public String execute() throws CustomException{
+        String out;
         if (isInvalidIndex(index)) {
-            return;
+            throw new CustomException("Invalid index");
         }
         Task deleteTask = TaskList.getTask(index);
-        Ui.printBotString(String.format(" I have removed this task: %s\n", deleteTask.name));
-        Ui.printString(deleteTask.toString());
+        out = Ui.printBotString(String.format(" I have removed this task: %s\n", deleteTask.name));
+        out += Ui.printString(deleteTask.toString());
         TaskList.remove(deleteTask);
+        return out;
     }
 
 }

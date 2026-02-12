@@ -2,17 +2,19 @@ package command;
 
 import java.util.ArrayList;
 
+import exception.CustomException;
 import model.Task;
+import model.TaskList;
 import ui.Ui;
 
 /**
- * Marks the task as done
+ * Marks the task as done.
  */
 public class MarkCommand extends Command {
     public final int index;
 
     /**
-     * Constructs new MarkCommand
+     * Constructs new MarkCommand.
      * @param i, task index in taskList
      */
     public MarkCommand(int i) {
@@ -20,38 +22,41 @@ public class MarkCommand extends Command {
     }
 
     /**
-     * Checks if the task index is valid in TaskList
+     * Checks if the task index is valid in TaskList.
      * @param index, task index in TaskList
      * @param tasks, TaskList
      * @return true if invalid index
      */
     public boolean isInvalidIndex(int index, ArrayList<Task> tasks){
         if (index < 0 || index >= tasks.size()) {
-            Ui.printString("Invalid index!");
             return true;
         }
         return false;
     }
 
     /**
-     * run isInvalidIndex to check if index is valid
-     * marks the task as done and print task status to show changes
-     * warns the user if the task has already been done
-     * @param tasks, tasklist
+     * Run isInvalidIndex to check if index is valid.
+     * Marks the task as done and print task status to show changes.
+     * Warns the user if the task has already been done.
+     * @return out, String to be printed in GUI
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        if (isInvalidIndex(index, tasks)){
-            return;
+    public String execute() throws CustomException {
+        if (isInvalidIndex(index, TaskList.tasks)){
+            throw new CustomException("Invalid Index!");
         }
-        Task task = tasks.get(index);
+        String out;
+        Task task = TaskList.getTask(index);
+
         if (task.isDone) {
-            Ui.printString("Already done!");
+            out = Ui.printString("Already done!");
         }
         else {
             task.markAsDone();
-            Ui.printBotString(" Nice! I've marked this task as done:");
-            Ui.printString(task.toString());
+            out = Ui.printBotString(" Nice! I've marked this task as done:");
+            out += Ui.printString(task.toString());
         }
+
+        return out;
     }
 }

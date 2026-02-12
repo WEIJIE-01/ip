@@ -13,7 +13,7 @@ public class ByeCommand extends Command {
      * prints exit message to show Star exited
      */
     @Override
-    public void execute(ArrayList<Task> tasks) {
-        Ui.printExitMessage();   // Prints goodbye message in UI
+    public String execute() {
+        return Ui.printExitMessage();   // Prints goodbye message in UI
     }
 }
