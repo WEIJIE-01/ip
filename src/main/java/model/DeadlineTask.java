@@ -26,7 +26,7 @@ public class DeadlineTask extends Task {
         String UNMARKED_LABEL = "[ ]";
 
         String doneStatus = this.isDone ? MARKED_LABEL : UNMARKED_LABEL;
-        String byString = this.by.format(DateTimeFormatter.ofPattern("MMM/d/yyyy"));
+        String byString = this.by.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name
         return String.format("[D]%s %s (by: %s)", doneStatus, this.name, byString);
     }
