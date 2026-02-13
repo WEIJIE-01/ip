@@ -50,7 +50,7 @@ public class Ui {
     }
 
     /**
-     * @return output String that shows status of all existing task
+     * @return output Sqtring that shows status of all existing task
      */
     public static String printTasks(String msg, ArrayList<Task> tasks) {
         String output = msg + "\n";

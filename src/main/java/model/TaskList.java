@@ -57,4 +57,8 @@ public class TaskList {
         }
         return hitTasks;
     }
+
+    public static void clear() {
+        tasks.clear();
+    }
 }

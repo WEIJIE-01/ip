@@ -14,6 +14,11 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics']
 }
 
+dependencies {
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
+}
+
 application {
     mainClass.set("seedu.star.Launcher")
 }
@@ -27,6 +32,21 @@ java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
 }
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+        showStandardStreams = false
+    }
+}
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
