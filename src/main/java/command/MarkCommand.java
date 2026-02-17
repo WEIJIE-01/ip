@@ -15,7 +15,7 @@ public class MarkCommand extends Command {
 
     /**
      * Constructs new MarkCommand.
-     * @param i, task index in taskList
+     * @param i task index in taskList
      */
     public MarkCommand(int i) {
         this.index = i;
@@ -23,26 +23,23 @@ public class MarkCommand extends Command {
 
     /**
      * Checks if the task index is valid in TaskList.
-     * @param index, task index in TaskList
-     * @param tasks, TaskList
+     * @param index task index in TaskList
+     * @param tasks TaskList
      * @return true if invalid index
      */
-    public boolean isInvalidIndex(int index, ArrayList<Task> tasks){
-        if (index < 0 || index >= tasks.size()) {
-            return true;
-        }
-        return false;
+    public boolean isInvalidIndex(int index, ArrayList<Task> tasks) {
+        return index < 0 || index >= tasks.size();
     }
 
     /**
      * Run isInvalidIndex to check if index is valid.
      * Marks the task as done and print task status to show changes.
      * Warns the user if the task has already been done.
-     * @return out, String to be printed in GUI
+     * @return out String to be printed in GUI
      */
     @Override
     public String execute() throws CustomException {
-        if (isInvalidIndex(index, TaskList.tasks)){
+        if (isInvalidIndex(index, TaskList.getTasks())) {
             throw new CustomException("Invalid Index!");
         }
         String out;
@@ -50,8 +47,7 @@ public class MarkCommand extends Command {
 
         if (task.isTaskDone()) {
             out = Ui.printString("Already done!");
-        }
-        else {
+        } else {
             task.markAsDone();
             out = Ui.printBotString(" Nice! I've marked this task as done:");
             out += Ui.printString(task.toString());

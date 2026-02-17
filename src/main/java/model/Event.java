@@ -12,9 +12,9 @@ public class Event extends DeadlineTask {
 
     /**
      * Constructs an event
-     * @param name, name of event
-     * @param startDateTime, start date time
-     * @param endDateTime, end date time
+     * @param name name of event
+     * @param startDateTime start date time
+     * @param endDateTime end date time
      */
     public Event(String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         super(name, endDateTime);

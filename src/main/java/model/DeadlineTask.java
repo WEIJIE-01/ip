@@ -9,6 +9,11 @@ import java.time.format.DateTimeFormatter;
 public class DeadlineTask extends Task {
     private final LocalDateTime endDateTime;
 
+    /**
+     * Constructor for Deadline Task
+     * @param name of the task
+     * @param endDateTime deadline of the task
+     */
     public DeadlineTask(String name, LocalDateTime endDateTime) {
         super(name);
         this.endDateTime = endDateTime;
@@ -24,8 +29,8 @@ public class DeadlineTask extends Task {
      */
     @Override
     public String toString() {
-        String MARKED_LABEL = "[X]";
-        String UNMARKED_LABEL = "[ ]";
+        final String MARKED_LABEL = "[X]";
+        final String UNMARKED_LABEL = "[ ]";
 
         String doneStatus = this.isTaskDone() ? MARKED_LABEL : UNMARKED_LABEL;
         String byString = this.endDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));

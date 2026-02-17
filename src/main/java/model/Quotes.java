@@ -1,7 +1,3 @@
-/**
- * @author Your Name
- * @since 08/02/2026
- */
 package model;
 
 import java.util.ArrayList;
@@ -13,7 +9,7 @@ import java.util.Random;
  */
 public class Quotes {
     private static final Random random = new Random(0);
-    public static ArrayList<Quote> quoteBank = new ArrayList<>(Arrays.asList(
+    private static final ArrayList<Quote> quoteBank = new ArrayList<>(Arrays.asList(
             new Quote("Nelson Mandela", "It always seems impossible until it’s done."),
             new Quote("Walt Disney", "The way to get started is to quit talking and begin doing."),
             new Quote("Confucius", "It does not matter how slowly you go as long as you do not stop."),

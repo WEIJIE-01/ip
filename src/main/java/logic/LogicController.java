@@ -2,22 +2,21 @@ package logic;
 
 import java.time.LocalDateTime;
 
+import command.AddTaskCommand;
+import command.ByeCommand;
 import command.CheerCommand;
+import command.Command;
 import command.DeleteCommand;
 import command.ErrorCommand;
 import command.FindCommand;
 import command.ListCommand;
+import command.MarkCommand;
 import command.SaveCommand;
 import command.UnmarkCommand;
-import command.MarkCommand;
-import command.ByeCommand;
-import command.Command;
-import command.AddTaskCommand;
 import exception.CustomException;
-import model.Task;
 import model.DeadlineTask;
 import model.Event;
-import model.TaskList;
+import model.Task;
 import parser.DateTimeConverter;
 import parser.Message;
 
@@ -27,8 +26,7 @@ import parser.Message;
 public class LogicController {
 
     /**
-     *
-     * @param message, input from user
+     * @param message input from user
      * @return Command based on the first token in input
      */
     public static Command createCommand(Message message) throws CustomException {
@@ -42,7 +40,7 @@ public class LogicController {
             return new MarkCommand(index);
         case "unmark":
             int index2 = message.parseTaskIndex();
-            return new UnmarkCommand(index2);  // Create these classes
+            return new UnmarkCommand(index2); // Create these classes
         case "todo":
             Task todoTask = new Task(message.parseTaskName());
             return new AddTaskCommand(todoTask);

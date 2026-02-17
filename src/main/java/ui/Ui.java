@@ -1,10 +1,8 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-import model.TaskList;
 import model.Task;
 /**
  * Interacts with user by printing.
@@ -14,7 +12,7 @@ public class Ui {
     public static final String CHATBOT_NAME = "Star";
     public static final String BOT_LABEL = String.format("[%s]", CHATBOT_NAME);
     public static final String INDENTATION = "       ";
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     /**
      * Prints welcome message.
@@ -50,13 +48,13 @@ public class Ui {
     }
 
     /**
-     * @return output Sqtring that shows status of all existing task
+     * @return output String that shows status of all existing task
      */
     public static String printTasks(String msg, ArrayList<Task> tasks) {
         String output = msg + "\n";
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
-            output = output.concat(String.format("%d.%s\n",i + 1, task.toString()));
+            output = output.concat(String.format("%d.%s\n", i + 1, task.toString()));
         }
         return output;
     }

@@ -13,17 +13,17 @@ public class DateTimeConverter {
     /**
      * Convert date time tokens into LocalDateTime
      *
-     * @param tdStrings, tokens of string
+     * @param tdStrings tokens of string
      * @return LocalDateTime
-     * @throws CustomException
+     * @throw CustomException
      */
     public static LocalDateTime toLocalDate(String[] tdStrings) throws CustomException {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
-                    "[yyyy-MM-dd HH:mm]" +   // existing
-                    "[yyyy-MM-dd]" +         // date only
-                    "[dd/MM/yy HH:mm]" +     // new format with time
-                    "[dd/MM/yy]"             // new format, date only
+                    "[yyyy-MM-dd HH:mm]"
+                            + "[yyyy-MM-dd]"
+                            + "[dd/MM/yy HH:mm]"
+                            + "[dd/MM/yy]"
                     );
             if (tdStrings.length == 1) {
                 String tdString = tdStrings[0] + " 23:59";

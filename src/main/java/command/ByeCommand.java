@@ -1,8 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-
-import model.Task;
 import ui.Ui;
 
 /**
@@ -14,6 +11,6 @@ public class ByeCommand extends Command {
      */
     @Override
     public String execute() {
-        return Ui.printExitMessage();   // Prints goodbye message in UI
+        return Ui.printExitMessage(); // Prints goodbye message in UI
     }
 }

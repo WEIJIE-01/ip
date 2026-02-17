@@ -15,22 +15,22 @@ import ui.Ui;
  * Returns the task status from tasklist
  */
 public class FindCommand extends Command {
-    String keyword;
+    private final String keyword;
 
     /**
      * Constructs FindCommand
      * @param keyword String from user input
      */
-    public FindCommand(String keyword){
+    public FindCommand(String keyword) {
         this.keyword = keyword;
     }
 
     /**
      * Searches TaskList for task names with matching keyword
-     * @returns list of matching tasks
+     * @return list of matching tasks
      */
     @Override
-    public String execute(){
+    public String execute() {
         ArrayList<Task> matchingTasks = TaskList.find(keyword);
         return Ui.printTasks(" Here are the matching tasks in your list:", matchingTasks);
     }

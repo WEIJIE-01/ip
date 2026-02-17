@@ -1,7 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-import model.Task;
 import ui.Ui;
 
 /**
@@ -12,19 +10,18 @@ public class ErrorCommand extends Command {
 
     /**
      * constructs with error message
-     * @param errorMsg, error message
+     * @param errorMsg error message
      */
     public ErrorCommand(String errorMsg) {
         this.errorMsg = errorMsg;
     }
-
 
     /**
      * print error message
      * @return String error message
      */
     @Override
-    public String  execute() {
-        return  Ui.printBotString(" ERROR! " + errorMsg);
+    public String execute() {
+        return Ui.printBotString(" ERROR! " + errorMsg);
     }
 }

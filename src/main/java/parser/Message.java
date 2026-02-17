@@ -1,18 +1,19 @@
 package parser;
 
 import java.util.Arrays;
+
 import exception.CustomException;
 /**
  * Parses user commands into tokens
  */
 public class Message {
-    final String message;
     public final String[] tokens;
     public final int tokenLength;
+    private final String message;
 
     /**
      * constructs with String input message
-     * @param message, user input
+     * @param message user input
      */
     public Message(String message) {
         this.message = message;
@@ -29,14 +30,16 @@ public class Message {
         return trimmedMessage.split(" ");
     }
 
-     /**
-     * get TaskIndex from TaskList for mark and unmark
-     * @return Task index
-     */
+    /**
+    * get TaskIndex from TaskList for mark and unmark
+    * @return Task index
+    */
     public int parseTaskIndex() {
-        if (tokens.length <= 1) return -1;
+        if (tokens.length <= 1) {
+            return -1;
+        }
         try {
-            return Integer.parseInt(tokens[1].trim()) - 1;  // 1-based → 0-based
+            return Integer.parseInt(tokens[1].trim()) - 1; // 1-based → 0-based
         } catch (NumberFormatException e) {
             return -1;
         }
@@ -60,7 +63,7 @@ public class Message {
         if (lastTaskNameIndex <= 1) {
             throw new CustomException("Empty task description!");
         }
-        return String.join(" ",Arrays.copyOfRange(tokens,1,lastTaskNameIndex));
+        return String.join(" ", Arrays.copyOfRange(tokens, 1, lastTaskNameIndex));
     }
 
     /**
@@ -68,9 +71,9 @@ public class Message {
      * @return tokens for end date
      */
     public String[] parseBy() {
-        for (int i=0; i < tokenLength - 1 ; i++) {
+        for (int i = 0; i < tokenLength - 1; i++) {
             if (tokens[i].equals("/by")) {
-                return Arrays.copyOfRange(tokens, i+1, tokenLength);
+                return Arrays.copyOfRange(tokens, i + 1, tokenLength);
             }
         }
         throw new CustomException("/by not found");
@@ -83,7 +86,7 @@ public class Message {
     public String[] parseSt() {
         int stIndex = 0;
         int byIndex = tokenLength;
-        for (int i=0; i < tokenLength - 1 ; i++) {
+        for (int i = 0; i < tokenLength - 1; i++) {
             if (tokens[i].equals("/st")) {
                 stIndex = i + 1;
             }
@@ -91,7 +94,7 @@ public class Message {
                 byIndex = i;
             }
         }
-        if (stIndex==0) {
+        if (stIndex == 0) {
             throw new CustomException("/st not found");
         }
         return Arrays.copyOfRange(tokens, stIndex, byIndex);
