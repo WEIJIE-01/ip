@@ -32,7 +32,7 @@ public class MarkCommandTest {
         MarkCommand cmd = new MarkCommand(0);
 
         String result = cmd.execute();
-        assertTrue(task.isDone);
+        assertTrue(task.isTaskDone());
         assertTrue(result.contains("Nice! I've marked this task as done"));
     }
 

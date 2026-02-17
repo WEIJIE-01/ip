@@ -6,15 +6,23 @@ import ui.Ui;
  * Events are tasks with start and end date/time
  */
 public class Task {
-    public final String name;
-    public boolean isDone = false;
+    private final String name;
+    private boolean isDone = false;
 
     /**
      * Constructs a task
      * @param name, name of task
      */
-    public Task(String name){
+    public Task(String name) {
         this.name = name;
+    }
+
+    public String getTaskName() {
+        return this.name;
+    }
+
+    public boolean isTaskDone() {
+        return this.isDone;
     }
 
     // Returns a string containing task status
@@ -25,7 +33,7 @@ public class Task {
     }
 
     // Marks task as done
-    public void markAsDone (){
+    public void markAsDone() {
         if (this.isDone) {
             System.out.println(Ui.BOT_LABEL + "This task has already been done!");
         }
@@ -35,7 +43,7 @@ public class Task {
     }
 
     // Unmarks task as done
-    public void unmarkAsDone (){
+    public void unmarkAsDone() {
         if (isDone) {
             this.isDone = false;
         }

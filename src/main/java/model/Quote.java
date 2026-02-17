@@ -10,7 +10,7 @@ package model;
 public class Quote {
     String author;
     String quote;
-    String JUSTIFIED_WIDTH = " ".repeat(40);
+    final static String JUSTIFIED_WIDTH = " ".repeat(40);
 
     public Quote(String author, String quote) {
         this.quote = quote;

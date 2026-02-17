@@ -8,19 +8,22 @@ import java.time.format.DateTimeFormatter;
  */
 public class Event extends DeadlineTask {
     // start in String
-    public final LocalDateTime st;
+    private final LocalDateTime startDateTime;
 
     /**
      * Constructs an event
      * @param name, name of event
-     * @param st, start date time
-     * @param end, end date time
+     * @param startDateTime, start date time
+     * @param endDateTime, end date time
      */
-    public Event(String name, LocalDateTime st, LocalDateTime end) {
-        super(name, end);
-        this.st = st;
+    public Event(String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        super(name, endDateTime);
+        this.startDateTime = startDateTime;
     }
 
+    public LocalDateTime getStartDateTime() {
+        return this.startDateTime;
+    }
     /**
      * Creates a customised toString that shows status, start and end date, task name
      * @return toString of the task
@@ -30,10 +33,10 @@ public class Event extends DeadlineTask {
         String MARKED_LABEL = "[X]";
         String UNMARKED_LABEL = "[ ]";
 
-        String doneStatus = this.isDone ? MARKED_LABEL : UNMARKED_LABEL;
-        String byString = this.by.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
-        String stString = this.st.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
+        String doneStatus = this.isTaskDone() ? MARKED_LABEL : UNMARKED_LABEL;
+        String byString = this.getEndDate().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
+        String stString = this.getStartDateTime().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name
-        return String.format("[E]%s %s (st: %s | by: %s)", doneStatus, this.name, stString, byString);
+        return String.format("[E]%s %s (st: %s | by: %s)", doneStatus, this.getTaskName(), stString, byString);
     }
 }

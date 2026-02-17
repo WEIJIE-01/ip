@@ -7,14 +7,16 @@ import java.time.format.DateTimeFormatter;
  * Creates a task with deadline denoted by /by
  */
 public class DeadlineTask extends Task {
-    public final LocalDateTime by;
+    private final LocalDateTime endDateTime;
 
-    public DeadlineTask(String name, LocalDateTime by) {
+    public DeadlineTask(String name, LocalDateTime endDateTime) {
         super(name);
-        this.by = by;
+        this.endDateTime = endDateTime;
     }
 
-    // returns status of the task in String
+    public LocalDateTime getEndDate() {
+        return endDateTime;
+    }
 
     /**
      * Creates a customised toString that shows status, deadline date and task name
@@ -25,9 +27,9 @@ public class DeadlineTask extends Task {
         String MARKED_LABEL = "[X]";
         String UNMARKED_LABEL = "[ ]";
 
-        String doneStatus = this.isDone ? MARKED_LABEL : UNMARKED_LABEL;
-        String byString = this.by.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
+        String doneStatus = this.isTaskDone() ? MARKED_LABEL : UNMARKED_LABEL;
+        String byString = this.endDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name
-        return String.format("[D]%s %s (by: %s)", doneStatus, this.name, byString);
+        return String.format("[D]%s %s (by: %s)", doneStatus, this.getTaskName(), byString);
     }
 }
