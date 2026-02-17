@@ -1,10 +1,8 @@
 package command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import exception.CustomException;
-import model.Task;
 import storage.Storage;
 import ui.Ui;
 
@@ -24,8 +22,7 @@ public class SaveCommand extends Command {
         try {
             Storage.save();
             return Ui.printBotString(" Tasks Saved\n");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new CustomException(" Unable to save file " + e.getMessage());
         }
     }

@@ -11,7 +11,7 @@ public class Task {
 
     /**
      * Constructs a task
-     * @param name, name of task
+     * @param name name of task
      */
     public Task(String name) {
         this.name = name;
@@ -25,29 +25,34 @@ public class Task {
         return this.isDone;
     }
 
-    // Returns a string containing task status
-    public String toString(){
+    /**
+     * Converts the task status to string
+     * @return string containing task status
+     */
+    public String toString() {
         String doneStatus = isDone ? "[X]" : "[ ]";
         // returns [T][X] task name
         return "[T]" + doneStatus + " " + this.name;
     }
 
-    // Marks task as done
+    /**
+     * Marks task as done
+     */
     public void markAsDone() {
         if (this.isDone) {
             System.out.println(Ui.BOT_LABEL + "This task has already been done!");
-        }
-        else {
+        } else {
             this.isDone = true;
         }
     }
 
-    // Unmarks task as done
+    /**
+     * Unmarks task as done
+     */
     public void unmarkAsDone() {
         if (isDone) {
             this.isDone = false;
-        }
-        else {
+        } else {
             this.isDone = true;
             System.out.println(Ui.BOT_LABEL + "This task is still waiting for you!");
         }

@@ -1,8 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-
-import model.Task;
 import model.TaskList;
 import ui.Ui;
 
@@ -16,6 +13,6 @@ public class ListCommand extends Command {
      */
     @Override
     public String execute() {
-        return Ui.printTasks(" Tasklist:", TaskList.tasks);
+        return Ui.printTasks(" Tasklist:", TaskList.getTasks());
     }
 }

@@ -4,18 +4,15 @@
  */
 package command;
 
-import java.util.ArrayList;
-
 import model.Quotes;
-import model.Task;
 import ui.Ui;
 
 /**
  * Gives users motivational quote
  * Output random String quote into Ui from a quote bank
  */
-public class CheerCommand extends Command{
-    String quote;
+public class CheerCommand extends Command {
+    private final String quote;
 
     /**
      * Initialize a random String quote from quote bank
@@ -24,8 +21,12 @@ public class CheerCommand extends Command{
         this.quote = Quotes.getRandomQuote();
     }
 
+    public String getQuote() {
+        return this.quote;
+    }
     /**
      * Ui prints quote
+     * @return the quote
      */
     @Override
     public String execute() {

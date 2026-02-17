@@ -1,7 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-
 import exception.CustomException;
 import model.Task;
 import model.TaskList;
@@ -12,7 +10,7 @@ import ui.Ui;
  * Deletes the task from TaskList
  */
 public class DeleteCommand extends Command {
-    public int index;
+    private final int index;
 
     public DeleteCommand(int index) {
         this.index = index;
@@ -35,7 +33,7 @@ public class DeleteCommand extends Command {
      * @return out String message to the user
      */
     @Override
-    public String execute() throws CustomException{
+    public String execute() throws CustomException {
         String out;
         if (isInvalidIndex(index)) {
             throw new CustomException("Invalid index");

@@ -17,18 +17,22 @@ import ui.Ui;
 public class Storage {
     public static final Path FILE_PATH = Paths.get("data", "StarTasks.txt");
 
-    // Creates file if file do not exist
-    // @throws IOException if unable to create file
+    /**
+    * Creates file if file do not exist
+    * @throws IOException
+    */
     public static void createFile() throws IOException {
         Files.createDirectories(FILE_PATH.getParent());
         if (!Files.exists(FILE_PATH)) {
             Files.createFile(FILE_PATH);
-            Ui.printString(String.format("\n%sStorage (%s) created",Ui.BOT_LABEL,FILE_PATH));
+            Ui.printString(String.format("\n%sStorage (%s) created", Ui.BOT_LABEL, FILE_PATH));
         }
     }
 
-    // appends the file by using Tasklist
-    // @throws IOException if unable to create file
+    /**
+    * Appends the file by using Tasklist
+    * @throws IOException
+    */
     public static void save() throws IOException {
         createFile();
         try (BufferedWriter writer = Files.newBufferedWriter(

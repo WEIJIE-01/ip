@@ -1,10 +1,7 @@
 package command;
 
-import java.util.ArrayList;
-
 import model.Task;
 import model.TaskList;
-import ui.Ui;
 
 /**
  * Adds new task into tasklist
@@ -15,7 +12,7 @@ public class AddTaskCommand extends Command {
     /**
      * constructs new Task
      */
-    public AddTaskCommand(Task task){
+    public AddTaskCommand(Task task) {
         this.task = task;
     }
 

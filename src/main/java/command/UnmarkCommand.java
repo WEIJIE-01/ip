@@ -1,7 +1,5 @@
 package command;
 
-import java.util.ArrayList;
-
 import exception.CustomException;
 import model.Task;
 import model.TaskList;
@@ -14,7 +12,7 @@ public class UnmarkCommand extends MarkCommand {
 
     /**
      * Constructs new MarkCommand
-     * @param taskIndex, task index in taskList
+     * @param taskIndex task index in taskList
      */
     public UnmarkCommand(int taskIndex) {
         super(taskIndex);
@@ -24,7 +22,7 @@ public class UnmarkCommand extends MarkCommand {
      * run isInvalidIndex to check if index is valid
      * marks the task as done and print task status to show changes
      * warns the user if the task is originally not done
-     * @return out, String to the gui
+     * @return out String to the gui
      * @throw CustomException stating invalid index
      */
     @Override

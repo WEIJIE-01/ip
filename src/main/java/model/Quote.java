@@ -8,10 +8,15 @@ package model;
  * Quote contains String author and String quote
  */
 public class Quote {
-    String author;
-    String quote;
-    final static String JUSTIFIED_WIDTH = " ".repeat(40);
+    private final String author;
+    private final String quote;
+    private final String JUSTIFIED_WIDTH = " ".repeat(40);
 
+    /**
+     * Constructor for quote
+     * @param author who wrote the quote
+     * @param quote content
+     */
     public Quote(String author, String quote) {
         this.quote = quote;
         this.author = author;

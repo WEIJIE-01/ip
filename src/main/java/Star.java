@@ -1,13 +1,12 @@
 package seedu.star;
 
 import command.ByeCommand;
-import javafx.application.Platform;
-
 import command.Command;
 import exception.CustomException;
-import ui.Ui;
+import javafx.application.Platform;
 import logic.LogicController;
 import parser.Message;
+import ui.Ui;
 
 /**
  * Main file that scans for input from UI
@@ -21,11 +20,11 @@ public class Star {
      * @param args String[]
      */
     public static void main(String[] args) {
-        Ui.printWelcomeMessage();   // Prints welcome message in UI
+        Ui.printWelcomeMessage(); // Prints welcome message in UI
 
-        while (true) {  // Infinite loop
+        while (true) { // Infinite loop
             if (!Ui.hasMoreInput()) {
-                break;  // EOF → exit
+                break; // EOF → exit
             }
 
             // Ignores empty input
@@ -38,7 +37,7 @@ public class Star {
             message.parseMessage();
             Command cmd = LogicController.createCommand(message);
             System.out.print(cmd.execute());
-            if (cmd instanceof ByeCommand) {  // Or check response contains "Bye"
+            if (cmd instanceof ByeCommand) { // Or check response contains "Bye"
                 break;
             }
         }
@@ -56,17 +55,12 @@ public class Star {
             message.parseMessage();
             Command cmd = LogicController.createCommand(message);
             commandType = cmd.getClass().getSimpleName();
-            if (cmd instanceof ByeCommand) {  // Or check response contains "Bye"
-                Platform.exit();  // Exits GUI thread safely
+            if (cmd instanceof ByeCommand) { // Or check response contains "Bye"
+                Platform.exit(); // Exits GUI thread safely
             }
             return cmd.execute();
-        }
-        catch (CustomException e) {
+        } catch (CustomException e) {
             return "Error: " + e.getMessage();
         }
-    }
-
-    public String getCommandType() {
-        return commandType;
     }
 }

@@ -1,6 +1,7 @@
 package seedu.star;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,10 +13,10 @@ import seedu.star.Star;
  */
 public class Main extends Application {
 
-    private Star star = new Star();
+    private final Star star = new Star();
 
     /**
-     * Initialise Anchor Pane to load fxml file into a scene
+     * Initialize Anchor Pane to load fxml file into a scene
      */
     @Override
     public void start(Stage stage) {
@@ -28,7 +29,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setStar(star);  // inject the Star instance
+            fxmlLoader.<seedu.star.MainWindow>getController().setStar(star); // inject the Star instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
