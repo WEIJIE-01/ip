@@ -34,7 +34,7 @@ public class UnmarkCommand extends MarkCommand {
             throw new CustomException("Invalid Index!");
         }
         Task task = TaskList.getTask(index);
-        if (!task.isDone) {
+        if (!task.isTaskDone()) {
             out = Ui.printString("Already not done");
         } else {
             task.unmarkAsDone();

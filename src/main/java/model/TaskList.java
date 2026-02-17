@@ -48,14 +48,14 @@ public class TaskList {
      * @return ArrayList of tasks that contains keyword
      */
     public static ArrayList<Task> find(String keyword) {
-        ArrayList<Task> hitTasks = new ArrayList<>();
+        ArrayList<Task> filteredTasks = new ArrayList<>();
         for (int i=0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
-            if (task.name.contains(keyword)) {
-                hitTasks.add(task);
+            if (task.getTaskName().contains(keyword)) {
+                filteredTasks.add(task);
             }
         }
-        return hitTasks;
+        return filteredTasks;
     }
 
     public static void clear() {

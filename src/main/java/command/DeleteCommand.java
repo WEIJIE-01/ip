@@ -41,7 +41,7 @@ public class DeleteCommand extends Command {
             throw new CustomException("Invalid index");
         }
         Task deleteTask = TaskList.getTask(index);
-        out = Ui.printBotString(String.format(" I have removed this task: %s\n", deleteTask.name));
+        out = Ui.printBotString(String.format(" I have removed this task: %s\n", deleteTask.getTaskName()));
         out += Ui.printString(deleteTask.toString());
         TaskList.remove(deleteTask);
         return out;

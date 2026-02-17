@@ -48,7 +48,7 @@ public class MarkCommand extends Command {
         String out;
         Task task = TaskList.getTask(index);
 
-        if (task.isDone) {
+        if (task.isTaskDone()) {
             out = Ui.printString("Already done!");
         }
         else {

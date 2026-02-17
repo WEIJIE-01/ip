@@ -5,7 +5,6 @@ import javafx.application.Platform;
 
 import command.Command;
 import exception.CustomException;
-import model.TaskList;
 import ui.Ui;
 import logic.LogicController;
 import parser.Message;
@@ -47,6 +46,9 @@ public class Star {
 
     /**
      * Generates a response for the user's chat message.
+     * Creates command based on user input
+     * @param input String from user
+     * @return response from executing command
      */
     public String getResponse(String input) {
         try {

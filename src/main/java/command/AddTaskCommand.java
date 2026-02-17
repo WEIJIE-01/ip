@@ -26,7 +26,7 @@ public class AddTaskCommand extends Command {
     @Override
     public String execute() {
         TaskList.addTask(task);
-        String out = String.format(" I have added a new task: %s\n", task.name);
+        String out = String.format(" I have added a new task: %s\n", task.getTaskName());
         out = out + task;
         return out;
     }

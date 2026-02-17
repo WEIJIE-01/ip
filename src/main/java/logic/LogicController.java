@@ -48,17 +48,17 @@ public class LogicController {
             return new AddTaskCommand(todoTask);
         case "deadline":
             // Parser expects /by in message
-            String[] byEventTokens = message.parseBy();
-            LocalDateTime by = DateTimeConverter.toLocalDate(byEventTokens);
-            DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), by);
+            String[] deadlineDateParts = message.parseBy();
+            LocalDateTime deadline = DateTimeConverter.toLocalDate(deadlineDateParts);
+            DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), deadline);
             return new AddTaskCommand(deadlineTask);
         case "event":
             // Date/day expected be after /by and /st token
-            String[] byEventTokens2 = message.parseBy();
-            String[] stEventTokens2 = message.parseSt();
-            LocalDateTime by2 = DateTimeConverter.toLocalDate(byEventTokens2);
-            LocalDateTime st2 = DateTimeConverter.toLocalDate(stEventTokens2);
-            Event eventTask = new Event(message.parseTaskName(), st2, by2);
+            String[] endDateParts = message.parseBy();
+            String[] startDateParts = message.parseSt();
+            LocalDateTime endDate = DateTimeConverter.toLocalDate(endDateParts);
+            LocalDateTime startDate = DateTimeConverter.toLocalDate(startDateParts);
+            Event eventTask = new Event(message.parseTaskName(), startDate, endDate);
             return new AddTaskCommand(eventTask);
         case "delete":
             int index3 = message.parseTaskIndex();
