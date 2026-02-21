@@ -13,11 +13,13 @@ public class DateTimeConverter {
     /**
      * Convert date time tokens into LocalDateTime
      *
-     * @param tdStrings tokens of string
+     * @param dtStrings tokens of string
      * @return LocalDateTime
      * @throw CustomException
      */
-    public static LocalDateTime toLocalDate(String[] tdStrings) throws CustomException {
+    public static LocalDateTime toLocalDate(String[] dtStrings) throws CustomException {
+        assert dtStrings.length != 0 : "dtStrings should not be empty";
+        assert dtStrings.length < 3 : "dtStrings should not have more than 2 tokens";
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                     "[yyyy-MM-dd HH:mm]"
@@ -25,15 +27,16 @@ public class DateTimeConverter {
                             + "[dd/MM/yy HH:mm]"
                             + "[dd/MM/yy]"
                     );
-            if (tdStrings.length == 1) {
-                String tdString = tdStrings[0] + " 23:59";
+
+            // dtStrings only contain date
+            if (dtStrings.length == 1) {
+                String tdString = dtStrings[0] + " 23:59";
                 return LocalDateTime.parse(tdString, formatter);
             }
-            if (tdStrings.length == 2) {
-                String tdString = String.join(" ", tdStrings);
-                return LocalDateTime.parse(tdString, formatter);
-            }
-            throw new CustomException("Invalid date time format! Input dd/MM/yy HH:mm");
+
+            // dtStrings contain date and time
+            String tdString = String.join(" ", dtStrings);
+            return LocalDateTime.parse(tdString, formatter);
 
         } catch (DateTimeParseException e) {
             throw new CustomException("Invalid date time format! Input dd/MM/yy HH:mm");
