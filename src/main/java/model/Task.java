@@ -10,7 +10,8 @@ public class Task {
     private boolean isDone = false;
 
     /**
-     * Constructs a task
+     * Constructs a new task with the given name.
+     *
      * @param name name of task
      */
     public Task(String name) {
@@ -21,6 +22,11 @@ public class Task {
         return this.name;
     }
 
+    /**
+     * Returns true if this task is done.
+     *
+     * @return true if done, false otherwise
+     */
     public boolean isDone() {
         return this.isDone;
     }
