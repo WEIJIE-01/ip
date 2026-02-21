@@ -2,6 +2,7 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import model.Task;
 /**
@@ -51,12 +52,9 @@ public class Ui {
      * @return output String that shows status of all existing task
      */
     public static String printTasks(String msg, ArrayList<Task> tasks) {
-        String output = msg + "\n";
-        for (int i = 0; i < tasks.size(); i++) {
-            Task task = tasks.get(i);
-            output = output.concat(String.format("%d.%s\n", i + 1, task.toString()));
-        }
-        return output;
+        return msg + tasks.stream()
+                .map(task -> String.format("%d. %s\n", tasks.indexOf(task) + 1, task))
+                .collect(Collectors.joining());
     }
 
     /**
