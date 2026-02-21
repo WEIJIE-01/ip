@@ -32,12 +32,12 @@ public class UnmarkCommand extends MarkCommand {
             throw new CustomException("Invalid Index!");
         }
         Task task = TaskList.getTask(index);
-        if (!task.isTaskDone()) {
-            out = Ui.printString("Already not done");
+        if (!task.isDone()) {
+            out = Ui.getMessageWithIndentation("Already not done");
         } else {
             task.unmarkAsDone();
-            out = Ui.printBotString("OK, I've marked this task as not done yet:");
-            out += Ui.printString(task.toString());
+            out = Ui.getMessageWithBotName("OK, I've marked this task as not done yet:");
+            out += Ui.getMessageWithIndentation(task.toString());
         }
         return out;
     }

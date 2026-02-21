@@ -19,25 +19,26 @@ public class Storage {
 
     /**
     * Creates file if file do not exist
-    * @throws IOException
+    * @throws IOException when filePath do not exist
     */
     public static void createFile() throws IOException {
         Files.createDirectories(FILE_PATH.getParent());
         if (!Files.exists(FILE_PATH)) {
             Files.createFile(FILE_PATH);
-            Ui.printString(String.format("\n%sStorage (%s) created", Ui.BOT_LABEL, FILE_PATH));
+            Ui.getMessageWithIndentation(String.format("\n%sStorage (%s) created", Ui.BOT_LABEL, FILE_PATH));
         }
     }
 
     /**
     * Appends the file by using Tasklist
-    * @throws IOException
+    * @throws IOException when unable to save the file
     */
     public static void save() throws IOException {
         createFile();
         try (BufferedWriter writer = Files.newBufferedWriter(
             FILE_PATH, StandardOpenOption.APPEND,
             StandardOpenOption.WRITE)) {
+            assert TaskList.getSize() != 0 : "Task list should not be empty";
             for (int i = 0; i < TaskList.getSize(); i++) {
                 Task task = TaskList.getTask(i);
                 writer.write(task.toString());

@@ -21,7 +21,7 @@ public class Task {
         return this.name;
     }
 
-    public boolean isTaskDone() {
+    public boolean isDone() {
         return this.isDone;
     }
 
@@ -39,22 +39,13 @@ public class Task {
      * Marks task as done
      */
     public void markAsDone() {
-        if (this.isDone) {
-            System.out.println(Ui.BOT_LABEL + "This task has already been done!");
-        } else {
-            this.isDone = true;
-        }
+        this.isDone = true;
     }
 
     /**
      * Unmarks task as done
      */
     public void unmarkAsDone() {
-        if (isDone) {
-            this.isDone = false;
-        } else {
-            this.isDone = true;
-            System.out.println(Ui.BOT_LABEL + "This task is still waiting for you!");
-        }
+        this.isDone = false;
     }
 }

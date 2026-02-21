@@ -22,6 +22,6 @@ public class ErrorCommand extends Command {
      */
     @Override
     public String execute() {
-        return Ui.printBotString(" ERROR! " + errorMsg);
+        return Ui.getMessageWithBotName(" ERROR! " + errorMsg);
     }
 }

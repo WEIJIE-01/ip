@@ -1,6 +1,6 @@
 package ui;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -44,14 +44,15 @@ public class Ui {
     /**
      * @return exit message, String
      */
-    public static String printExitMessage() {
-        return String.format("\n%s Bye. Hope to see you again soon!", BOT_LABEL);
+    public static String getExitMessage() {
+        return String.format("\n%s Bye, hope to see you again soon!", BOT_LABEL);
     }
 
     /**
      * @return output String that shows status of all existing task
      */
-    public static String printTasks(String msg, ArrayList<Task> tasks) {
+
+    public static String taskstoString(String msg, List<Task> tasks) {
         return msg + tasks.stream()
                 .map(task -> String.format("%d. %s\n", tasks.indexOf(task) + 1, task))
                 .collect(Collectors.joining());
@@ -60,7 +61,7 @@ public class Ui {
     /**
      * Prints any string.
      */
-    public static String printString(String msg) {
+    public static String getMessageWithIndentation(String msg) {
         return INDENTATION + msg + "\n";
     }
 
@@ -69,7 +70,7 @@ public class Ui {
      * Print strings starting with bot label
      * @param msg String to print out
      */
-    public static String printBotString(String msg) {
+    public static String getMessageWithBotName(String msg) {
         return BOT_LABEL + msg;
     }
 }

@@ -33,7 +33,7 @@ public class Event extends DeadlineTask {
         String MARKED_LABEL = "[X]";
         String UNMARKED_LABEL = "[ ]";
 
-        String doneStatus = this.isTaskDone() ? MARKED_LABEL : UNMARKED_LABEL;
+        String doneStatus = this.isDone() ? MARKED_LABEL : UNMARKED_LABEL;
         String byString = this.getEndDate().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         String stString = this.getStartDateTime().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name

@@ -4,7 +4,7 @@
  */
 package command;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import model.Task;
 import model.TaskList;
@@ -31,8 +31,8 @@ public class FindCommand extends Command {
      */
     @Override
     public String execute() {
-        ArrayList<Task> matchingTasks = TaskList.find(keyword);
-        return Ui.printTasks(" Here are the matching tasks in your list:", matchingTasks);
+        List<Task> matchingTasks = TaskList.find(keyword);
+        return Ui.taskstoString(" Here are the matching tasks in your list:", matchingTasks);
     }
 
 }
