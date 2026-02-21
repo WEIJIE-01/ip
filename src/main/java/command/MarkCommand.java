@@ -1,6 +1,6 @@
 package command;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import exception.CustomException;
 import model.Task;
@@ -27,7 +27,7 @@ public class MarkCommand extends Command {
      * @param tasks TaskList
      * @return true if invalid index
      */
-    public boolean isInvalidIndex(int index, ArrayList<Task> tasks) {
+    public boolean isInvalidIndex(int index, List<Task> tasks) {
         return index < 0 || index >= tasks.size();
     }
 

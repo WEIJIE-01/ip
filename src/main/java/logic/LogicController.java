@@ -16,6 +16,7 @@ import command.UnmarkCommand;
 import exception.CustomException;
 import model.DeadlineTask;
 import model.Event;
+import model.Priority;
 import model.Task;
 import parser.DateTimeConverter;
 import parser.Message;
@@ -30,6 +31,7 @@ public class LogicController {
      * @return Command based on the first token in input
      */
     public static Command createCommand(Message message) throws CustomException {
+        Priority priority = message.parsePriority();
         switch (message.tokens[0]) {
         case "bye":
             return new ByeCommand();
@@ -42,13 +44,13 @@ public class LogicController {
             int index2 = message.parseTaskIndex();
             return new UnmarkCommand(index2); // Create these classes
         case "todo":
-            Task todoTask = new Task(message.parseTaskName());
+            Task todoTask = new Task(message.parseTaskName(), priority);
             return new AddTaskCommand(todoTask);
         case "deadline":
             // Parser expects /by in message
             String[] deadlineDateParts = message.parseBy();
             LocalDateTime deadline = DateTimeConverter.toLocalDate(deadlineDateParts);
-            DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), deadline);
+            DeadlineTask deadlineTask = new DeadlineTask(message.parseTaskName(), priority, deadline);
             return new AddTaskCommand(deadlineTask);
         case "event":
             // Date/day expected be after /by and /st token
@@ -56,7 +58,7 @@ public class LogicController {
             String[] startDateParts = message.parseSt();
             LocalDateTime endDate = DateTimeConverter.toLocalDate(endDateParts);
             LocalDateTime startDate = DateTimeConverter.toLocalDate(startDateParts);
-            Event eventTask = new Event(message.parseTaskName(), startDate, endDate);
+            Event eventTask = new Event(message.parseTaskName(), priority, startDate, endDate);
             return new AddTaskCommand(eventTask);
         case "delete":
             int index3 = message.parseTaskIndex();

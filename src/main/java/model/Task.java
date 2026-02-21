@@ -1,6 +1,5 @@
 package model;
 
-import ui.Ui;
 /**
  * Task has 2 states: done and not done
  * Events are tasks with start and end date/time
@@ -8,20 +7,28 @@ import ui.Ui;
 public class Task {
     private final String name;
     private boolean isDone = false;
-
+    private Priority priority = Priority.MEDIUM; // default
     /**
      * Constructs a new task with the given name.
-     *
      * @param name name of task
+     * @param priority priority of task
      */
-    public Task(String name) {
+    public Task(String name, Priority priority) {
         this.name = name;
+        this.priority = priority;
     }
 
     public String getTaskName() {
         return this.name;
     }
 
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
     /**
      * Returns true if this task is done.
      *
@@ -38,7 +45,7 @@ public class Task {
     public String toString() {
         String doneStatus = isDone ? "[X]" : "[ ]";
         // returns [T][X] task name
-        return "[T]" + doneStatus + " " + this.name;
+        return String.format("[T]%s(%s) %s", doneStatus, priority, name);
     }
 
     /**

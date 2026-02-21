@@ -3,6 +3,8 @@ package parser;
 import java.util.Arrays;
 
 import exception.CustomException;
+import model.Priority;
+
 /**
  * Parses user commands into tokens
  */
@@ -47,6 +49,7 @@ public class Message {
 
     /**
      * get TaskName
+     * Name ends before any of the key (/p /by /st)
      * if empty -> throws exception
      * @return Task name
      */
@@ -55,7 +58,7 @@ public class Message {
 
         // taskName stops upon seeing /by or /st
         for (int i = 1; i < tokenLength; i++) {
-            if (tokens[i].equals("/by") || tokens[i].equals("/st")) {
+            if (isKey(tokens[i])) {
                 lastTaskNameIndex = i;
                 break;
             }
@@ -64,6 +67,10 @@ public class Message {
             throw new CustomException("Empty task description!");
         }
         return String.join(" ", Arrays.copyOfRange(tokens, 1, lastTaskNameIndex));
+    }
+
+    private boolean isKey(String token) {
+        return token.equals("/by") || token.equals("/st") || token.equals("/p");
     }
 
     /**
@@ -80,7 +87,7 @@ public class Message {
     }
 
     /**
-     * checks for /st and return start date/time as String
+     * Checks for /st and return start date/time as String.
      * @return tokens for start date
      */
     public String[] parseSt() {
@@ -98,6 +105,20 @@ public class Message {
             throw new CustomException("/st not found");
         }
         return Arrays.copyOfRange(tokens, stIndex, byIndex);
+    }
+
+    /**
+     * Looks through tokens for /p.
+     * Token after /p is the priority
+     * @return priority object
+     */
+    public Priority parsePriority() {
+        for (int i = 0; i < tokenLength - 1; i++) {
+            if (tokens[i].equals("/p")) {
+                return Priority.fromString(tokens[i + 1]);
+            }
+        }
+        return Priority.MEDIUM; // Default
     }
 
 }

@@ -9,15 +9,17 @@ import java.time.format.DateTimeFormatter;
 public class Event extends DeadlineTask {
     // start in String
     private final LocalDateTime startDateTime;
+    private Priority priority = Priority.MEDIUM; // default
 
     /**
      * Constructs an event
      * @param name name of event
+     * @param priority priority of task
      * @param startDateTime start date time
      * @param endDateTime end date time
      */
-    public Event(String name, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        super(name, endDateTime);
+    public Event(String name, Priority priority, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        super(name, priority, endDateTime);
         this.startDateTime = startDateTime;
     }
 
@@ -37,6 +39,6 @@ public class Event extends DeadlineTask {
         String byString = this.getEndDate().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         String stString = this.getStartDateTime().format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name
-        return String.format("[E]%s %s (st: %s | by: %s)", doneStatus, this.getTaskName(), stString, byString);
+        return String.format("[E]%s(%s) %s (st: %s | by: %s)", doneStatus, priority, this.getTaskName(), stString, byString);
     }
 }
