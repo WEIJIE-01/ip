@@ -45,12 +45,12 @@ public class MarkCommand extends Command {
         String out;
         Task task = TaskList.getTask(index);
 
-        if (task.isTaskDone()) {
-            out = Ui.printString("Already done!");
+        if (task.isDone()) {
+            out = Ui.getMessageWithIndentation("Already done!");
         } else {
             task.markAsDone();
-            out = Ui.printBotString(" Nice! I've marked this task as done:");
-            out += Ui.printString(task.toString());
+            out = Ui.getMessageWithBotName(" Nice! I've marked this task as done:");
+            out += Ui.getMessageWithIndentation(task.toString());
         }
 
         return out;

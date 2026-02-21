@@ -1,13 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Stores all current tasks
  */
 public class TaskList {
-    static final int TASK_CAPACITY = 100;
-    private static ArrayList<Task> tasks = new ArrayList<>(TASK_CAPACITY); //Maximum 100 tasks
+    private static final int TASK_CAPACITY = 100;
+    private static List<Task> tasks = new ArrayList<>(TASK_CAPACITY); //Maximum 100 tasks
 
     /**
      * adds task
@@ -26,8 +28,8 @@ public class TaskList {
         return tasks.get(taskIndex);
     }
 
-    public static ArrayList<Task> getTasks() {
-        return tasks;
+    public static List<Task> getTasks() {
+        return Collections.unmodifiableList(tasks);
     }
 
     /**
@@ -51,8 +53,8 @@ public class TaskList {
      * @param keyword String input by users
      * @return ArrayList of tasks that contains keyword
      */
-    public static ArrayList<Task> find(String keyword) {
-        ArrayList<Task> filteredTasks = new ArrayList<>();
+    public static List<Task> find(String keyword) {
+        List<Task> filteredTasks = new ArrayList<>();
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.getTaskName().contains(keyword)) {

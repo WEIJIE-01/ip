@@ -21,7 +21,7 @@ public class SaveCommand extends Command {
     public String execute() throws CustomException {
         try {
             Storage.save();
-            return Ui.printBotString(" Tasks Saved\n");
+            return Ui.getMessageWithBotName(" Tasks Saved\n");
         } catch (IOException e) {
             throw new CustomException(" Unable to save file " + e.getMessage());
         }

@@ -1,6 +1,5 @@
 package seedu.star;
 
-import command.ByeCommand;
 import command.Command;
 import exception.CustomException;
 import javafx.application.Platform;
@@ -21,7 +20,10 @@ public class Star {
      */
     public static void main(String[] args) {
         Ui.printWelcomeMessage(); // Prints welcome message in UI
+        readUserInputLoop();
+    }
 
+    private static void readUserInputLoop() {
         while (true) { // Infinite loop
             if (!Ui.hasMoreInput()) {
                 break; // EOF → exit
@@ -33,14 +35,28 @@ public class Star {
                 continue;
             }
 
-            Message message = new Message(input);
-            message.parseMessage();
-            Command cmd = LogicController.createCommand(message);
-            System.out.print(cmd.execute());
-            if (cmd instanceof ByeCommand) { // Or check response contains "Bye"
+            String response = handleSingleInput(input);
+            System.out.print(response);
+
+            if (isExitCommand(response)) {
                 break;
             }
         }
+    }
+
+    private static String handleSingleInput(String input) {
+        try {
+            Message message = new Message(input);
+            message.parseMessage();
+            Command cmd = LogicController.createCommand(message);
+            return cmd.execute();
+        } catch (CustomException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    private static boolean isExitCommand(String response) {
+        return response.contains("Bye");
     }
 
     /**
@@ -50,17 +66,10 @@ public class Star {
      * @return response from executing command
      */
     public String getResponse(String input) {
-        try {
-            Message message = new Message(input);
-            message.parseMessage();
-            Command cmd = LogicController.createCommand(message);
-            commandType = cmd.getClass().getSimpleName();
-            if (cmd instanceof ByeCommand) { // Or check response contains "Bye"
-                Platform.exit(); // Exits GUI thread safely
-            }
-            return cmd.execute();
-        } catch (CustomException e) {
-            return "Error: " + e.getMessage();
+        String response = handleSingleInput(input);
+        if (isExitCommand(response)) {
+            Platform.exit();
         }
+        return response;
     }
 }
