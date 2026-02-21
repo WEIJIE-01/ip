@@ -14,9 +14,10 @@ public class Star {
     private String commandType;
 
     /**
-     * Main to scan for user input iteratively
-     * Exits when "bye" is input
-     * @param args String[]
+     * Entry point for the Star chatbot.
+     * Runs the CLI loop until the user exits.
+     *
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         Ui.printWelcomeMessage(); // Prints welcome message in UI
