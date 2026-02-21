@@ -25,7 +25,7 @@ public class Storage {
         Files.createDirectories(FILE_PATH.getParent());
         if (!Files.exists(FILE_PATH)) {
             Files.createFile(FILE_PATH);
-            Ui.printString(String.format("\n%sStorage (%s) created", Ui.BOT_LABEL, FILE_PATH));
+            Ui.getMessageWithIndentation(String.format("\n%sStorage (%s) created", Ui.BOT_LABEL, FILE_PATH));
         }
     }
 

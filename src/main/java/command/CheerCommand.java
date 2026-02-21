@@ -30,7 +30,7 @@ public class CheerCommand extends Command {
      */
     @Override
     public String execute() {
-        return Ui.printBotString(this.quote);
+        return Ui.getMessageWithBotName(this.quote);
     }
 
 }

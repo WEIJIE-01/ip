@@ -11,6 +11,6 @@ public class ByeCommand extends Command {
      */
     @Override
     public String execute() {
-        return Ui.printExitMessage(); // Prints goodbye message in UI
+        return Ui.getExitMessage(); // Prints goodbye message in UI
     }
 }

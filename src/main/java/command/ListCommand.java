@@ -8,11 +8,11 @@ import ui.Ui;
  */
 public class ListCommand extends Command {
     /**
-     * Calls Ui.printTasks() to print task.toString.
+     * Calls Ui.TaskstoString() to print task.toString.
      * return String containing list of task
      */
     @Override
     public String execute() {
-        return Ui.printTasks(" Tasklist:", TaskList.getTasks());
+        return Ui.taskstoString(" Tasklist:", TaskList.getTasks());
     }
 }
