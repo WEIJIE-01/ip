@@ -23,13 +23,10 @@ public class TaskList {
      * @return task, Task object
      */
     public static Task getTask(int taskIndex) {
-        assert tasks != null : "Task List should not be null!";
         return tasks.get(taskIndex);
     }
 
     public static ArrayList<Task> getTasks() {
-        assert tasks != null : "Task List should not be null!";
-        assert !tasks.isEmpty() : "Task List size should not be zero";
         return tasks;
     }
 
@@ -38,7 +35,6 @@ public class TaskList {
     * @return size of TaskList
     */
     public static int getSize() {
-        assert tasks != null : "Task List should not be null!";
         return tasks.size();
     }
 
