@@ -1,0 +1,33 @@
+/* Base styling for the text inside the chat bubbles */
+.chat-bubble {
+    -fx-padding: 12px;
+    -fx-background-radius: 15px; /* Rounded corners */
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-wrap-text: true; /* Ensure long text wraps to the next line */
+}
+
+/* User styling (e.g., WhatsApp Green) */
+.user-bubble {
+    -fx-background-color: #DCF8C6;
+    -fx-text-fill: #000000;
+}
+
+/* Bot styling (e.g., White) */
+.star-bubble {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+
+/* Error styling (e.g., Light Red background, Dark Red text) */
+.error-bubble {
+    -fx-background-color: #FFCDD2;
+    -fx-text-fill: #B71C1C;
+    -fx-font-weight: bold;
+}
+
+/* Optional: Make the background of the chat app slightly gray */
+.scroll-pane {
+    -fx-background: #E5DDD5;
+    -fx-border-color: transparent;
+}

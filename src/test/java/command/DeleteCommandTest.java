@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import exception.CustomException;
+import model.Priority;
 import model.Task;
 import model.TaskList;
 import org.junit.jupiter.api.Test;
@@ -21,9 +22,9 @@ public class DeleteCommandTest {
     // Similar @BeforeEach
 
     @Test
-    void execute_validIndex_removesTask() throws Exception {
-        Task task1 = new Task("Keep");
-        Task task2 = new Task("Delete");
+    void execute_validIndex_removesTask() {
+        Task task1 = new Task("Keep", Priority.MEDIUM);
+        Task task2 = new Task("Delete", Priority.MEDIUM);
         TaskList.addTask(task1);
         TaskList.addTask(task2);
 

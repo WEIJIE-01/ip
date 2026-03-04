@@ -7,6 +7,7 @@ package command;
 import static org.junit.jupiter.api.Assertions.*;
 
 import exception.CustomException;
+import model.Priority;
 import model.Task;
 import model.TaskList;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,8 +27,8 @@ public class MarkCommandTest {
     }
 
     @Test
-    void execute_validIndex_marksTask() throws Exception {
-        Task task = new Task("Test");  // Assume constructor
+    void execute_validIndex_marksTask() {
+        Task task = new Task("Test", Priority.MEDIUM);  // Assume constructor
         TaskList.addTask(task);
         MarkCommand cmd = new MarkCommand(0);
 
@@ -37,8 +38,8 @@ public class MarkCommandTest {
     }
 
     @Test
-    void execute_alreadyDone_printsMessage() throws Exception {
-        Task task = new Task("Test");
+    void execute_alreadyDone_printsMessage() {
+        Task task = new Task("Test", Priority.MEDIUM);
         task.markAsDone();
         TaskList.addTask(task);
         MarkCommand cmd = new MarkCommand(0);
@@ -48,7 +49,7 @@ public class MarkCommandTest {
     }
 
     @Test
-    void execute_invalidIndex_throwsException() {
+    void execute_invalidIndex_throwsException() throws  CustomException {
         MarkCommand cmd = new MarkCommand(99);
         assertThrows(CustomException.class, cmd::execute);
     }

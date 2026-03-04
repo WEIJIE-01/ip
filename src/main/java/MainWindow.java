@@ -29,6 +29,10 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+
+        // Bind the dialogContainer width to the scrollPane width
+        // Subtract a small value (e.g., 15) to account for the vertical scrollbar
+        dialogContainer.prefWidthProperty().bind(scrollPane.widthProperty().subtract(15));
     }
 
     /** Injects the Star instance */
@@ -44,9 +48,14 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = star.getResponse(input);
+
+        // Logic to check if the bot's response is an error
+        boolean isError = response.startsWith("Error:") || response.contains("I dont understand");
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getStarDialog(response, starImage)
+                // Pass the isError flag to the bot's dialog
+                DialogBox.getStarDialog(response, starImage, isError)
         );
         userInput.clear();
     }

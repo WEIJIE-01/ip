@@ -1,5 +1,6 @@
 package command;
 
+import model.Priority;
 import model.Task;
 import model.TaskList;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ public class AddCommandTest {
     }
     @Test
     public void execute_addsTaskToTasklList() {
-        Task task = new Task("Walk");
+        Task task = new Task("Walk", Priority.MEDIUM);
         AddTaskCommand cmd = new AddTaskCommand(task);
 
         // Execute command

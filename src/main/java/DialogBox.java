@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
+import javafx.scene.shape.Circle;
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
  * and a label containing text from the speaker.
@@ -26,7 +26,7 @@ public class DialogBox extends HBox {
     /**
      * Constructs FXML loader to load fxml for dialog box.
      */
-    private DialogBox(String text, Image img) {
+    private DialogBox(String text, Image img, boolean isUser, boolean isError) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
             fxmlLoader.setController(this);
@@ -38,6 +38,23 @@ public class DialogBox extends HBox {
 
         dialog.setText(text);
         displayPicture.setImage(img);
+
+        // Circular clip for profile pictures (Optimizes space and improves UX)
+        Circle clip = new Circle(20, 20, 20); // Center X, Center Y, Radius
+        displayPicture.setClip(clip);
+        displayPicture.setFitWidth(40); // Downsize the image
+        displayPicture.setFitHeight(40);
+
+        // Assign CSS classes based on who is speaking
+        dialog.getStyleClass().add("chat-bubble");
+        if (isUser) {
+            dialog.getStyleClass().add("user-bubble");
+        } else {
+            dialog.getStyleClass().add("star-bubble");
+            if (isError) {
+                dialog.getStyleClass().add("error-bubble"); // Highlight errors
+            }
+        }
     }
 
     /**
@@ -48,15 +65,14 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
-        dialog.getStyleClass().add("reply-label");
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+        return new DialogBox(text, img, true, false);
     }
 
-    public static DialogBox getStarDialog(String text, Image img) {
-        var db = new DialogBox(text, img);
+    public static DialogBox getStarDialog(String text, Image img, boolean isError) {
+        var db = new DialogBox(text, img, false, isError);
         db.flip();
         return db;
     }
