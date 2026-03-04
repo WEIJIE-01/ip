@@ -1,20 +1,20 @@
 package command;
 
-import model.Priority;
-import model.Task;
-import model.TaskList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import model.Priority;
+import model.Task;
+import model.TaskList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Tests AddTaskCommand by looking for the task in TaskList
  */
 public class AddCommandTest {
     @BeforeEach
     public void setUp() {
-        TaskList.clear();  // Reset static list before EACH test
+        TaskList.clear(); // Reset static list before EACH test
     }
     @Test
     public void execute_addsTaskToTasklList() {

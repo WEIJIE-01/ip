@@ -25,7 +25,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "javafx-tutorial-duke"
+    archiveBaseName = "Star"
     archiveClassifier = null
 }
 

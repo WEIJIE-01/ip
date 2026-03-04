@@ -24,7 +24,10 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     /**
-     * Constructs FXML loader to load fxml for dialog box.
+     * Gets the user dialog box.
+     * @param text The text to display.
+     * @param img The user's image.
+     * @return A DialogBox representing the user's message.
      */
     private DialogBox(String text, Image img, boolean isUser, boolean isError) {
         try {

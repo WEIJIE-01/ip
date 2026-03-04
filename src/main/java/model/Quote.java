@@ -1,16 +1,12 @@
-/**
- * @author Your Name
- * @since 08/02/2026
- */
 package model;
 
 /**
  * Quote contains String author and String quote
  */
 public class Quote {
+    private static final String JUSTIFIED_WIDTH = " ".repeat(40);
     private final String author;
     private final String quote;
-    private final String JUSTIFIED_WIDTH = " ".repeat(40);
 
     /**
      * Constructor for quote

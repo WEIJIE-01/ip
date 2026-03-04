@@ -11,6 +11,7 @@ import exception.CustomException;
 import model.Priority;
 import model.Task;
 import model.TaskList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -20,7 +21,11 @@ import org.junit.jupiter.api.Test;
  */
 public class DeleteCommandTest {
     // Similar @BeforeEach
-
+    @BeforeEach
+    void setUp() {
+        TaskList.clear(); // Resets the static list before every test
+    }
+    
     @Test
     void execute_validIndex_removesTask() {
         Task task1 = new Task("Keep", Priority.MEDIUM);

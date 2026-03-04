@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Quotes {
     private static final Random random = new Random(0);
-    private static final ArrayList<Quote> quoteBank = new ArrayList<>(Arrays.asList(
+    private static final ArrayList<Quote> QUOTE_BANK = new ArrayList<>(Arrays.asList(
             new Quote("Nelson Mandela", "It always seems impossible until it’s done."),
             new Quote("Walt Disney", "The way to get started is to quit talking and begin doing."),
             new Quote("Confucius", "It does not matter how slowly you go as long as you do not stop."),
@@ -46,7 +46,7 @@ public class Quotes {
      * @return String of a random quote from quote bank
      */
     public static String getRandomQuote() {
-        int index = random.nextInt(quoteBank.size());
-        return quoteBank.get(index).toString();
+        int index = random.nextInt(QUOTE_BANK.size());
+        return QUOTE_BANK.get(index).toString();
     }
 }

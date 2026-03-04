@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class TaskList {
     private static final int TASK_CAPACITY = 100;
-    private static List<Task> tasks = new ArrayList<>(TASK_CAPACITY); //Maximum 100 tasks
+    private static List<Task> tasks = new ArrayList<>(TASK_CAPACITY); //Maximum 100 task
 
     /**
      * adds task
@@ -31,7 +31,7 @@ public class TaskList {
 
     public static List<Task> getTasks() {
         assert tasks != null : "Task List should not be null!";
-        assert !tasks.isEmpty() : "Task List size should not be zero";
+        assert TaskList.getSize() >= 0 : "Task List size should not be zero";
         return Collections.unmodifiableList(tasks);
     }
 

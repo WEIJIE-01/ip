@@ -76,14 +76,18 @@ public class MainWindow extends AnchorPane {
         }
 
         // Add the Welcome Message right when the app starts
-        String welcomeMessage = "Hello! My name is Star. I can track your deadlines, events, and to-dos. Click the ☰ icon to see my commands, or just type a task to begin!";
+        String welcomeMessage = "Hello! My name is Star. I can track your deadlines, events, "
+                + "and to-dos. Click the ☰ icon to see my commands, or just type a task to begin!";
 
         dialogContainer.getChildren().add(
                 DialogBox.getStarDialog(welcomeMessage, starImage, false)
         );
     }
 
-    /** Injects the Star instance */
+    /**
+     * Injects the Star instance.
+     * @param d The Star instance to inject.
+     */
     public void setStar(Star d) {
         star = d;
     }
