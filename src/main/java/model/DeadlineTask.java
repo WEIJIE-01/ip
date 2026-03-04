@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class DeadlineTask extends Task {
     private final LocalDateTime endDateTime;
-    private Priority priority = Priority.MEDIUM; // default
 
     /**
      * Constructor for Deadline Task
@@ -37,6 +36,6 @@ public class DeadlineTask extends Task {
         String doneStatus = this.isDone() ? MARKED_LABEL : UNMARKED_LABEL;
         String byString = this.endDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yy HH:mm"));
         // returns [D][X] task name
-        return String.format("[D]%s(%s) %s (by: %s)", doneStatus, priority, this.getTaskName(), byString);
+        return String.format("[D]%s(%s) %s (by: %s)", doneStatus, this.getPriority(), this.getTaskName(), byString);
     }
 }

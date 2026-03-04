@@ -7,7 +7,7 @@ package model;
 public class Task {
     private final String name;
     private boolean isDone = false;
-    private Priority priority = Priority.MEDIUM; // default
+    private Priority priority; // default
     /**
      * Constructs a new task with the given name.
      * @param name name of task
