@@ -31,3 +31,10 @@
     -fx-background: #E5DDD5;
     -fx-border-color: transparent;
 }
+
+/* Styling for when the user types an invalid command */
+.error-text-field {
+    -fx-border-color: #B71C1C; /* Dark Red border */
+    -fx-border-width: 2px;
+    -fx-background-color: #FFCDD2; /* Light Red background */
+}
