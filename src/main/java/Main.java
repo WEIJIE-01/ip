@@ -29,6 +29,8 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             scene.getStylesheets().add(getClass().getResource("/css/dialog-style.css").toExternalForm());
+
+            stage.setTitle("STAR BOT");
             stage.setScene(scene);
             fxmlLoader.<seedu.star.MainWindow>getController().setStar(star); // inject the Star instance
             stage.show();

@@ -2,7 +2,8 @@ package seedu.star;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -25,16 +26,19 @@ public class MainWindow extends AnchorPane {
     private Button sendButton;
 
     @FXML
-    private ComboBox<String> commandDropdown;
+    private MenuButton commandDropdown;
 
     // Create a tooltip to show the error message on hover
     private Tooltip errorTooltip = new Tooltip();
 
     private Star star;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image starImage = new Image(this.getClass().getResourceAsStream("/images/DaStar.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/UserPic.jpg"));
+    private Image starImage = new Image(this.getClass().getResourceAsStream("/images/StarPic.jpg"));
 
+    /**
+     * Initialize the main window components
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -52,35 +56,31 @@ public class MainWindow extends AnchorPane {
         });
 
         // Populate the dropdown with commands and descriptions
-        commandDropdown.getItems().addAll(
-                "todo - Add a basic task",
-                "deadline - Add a task with /by",
-                "event - Add an event with /st and /by",
-                "list - View all tasks",
-                "mark - Mark task as done",
-                "unmark - Mark task as undone",
-                "delete - Remove a task",
-                "find - Search for tasks",
-                "cheer - Get a motivational message",
-                "save - Save data manually",
-                "bye - Exit the application"
-        );
+        String[] commands = {
+            "todo - Add a basic task", "deadline - Add a task with /by",
+            "event - Add an event with /st and /by", "list - View all tasks",
+            "mark - Mark task as done", "unmark - Mark task as undone",
+            "delete - Remove a task", "find - Search for tasks",
+            "cheer - Get a motivational message", "save - Save data manually", "bye - Exit"
+        };
 
-        // UX Magic: When the user selects an item, autofill the text box!
-        commandDropdown.setOnAction(event -> {
-            String selectedItem = commandDropdown.getValue();
-            if (selectedItem != null) {
-                // Extract just the command word (e.g., "todo" from "todo - Add a basic task")
-                String commandWord = selectedItem.split(" - ")[0];
-
-                // Put it in the text box and add a space so they can start typing
+        for (String cmd : commands) {
+            MenuItem item = new MenuItem(cmd);
+            item.setOnAction(event -> {
+                String commandWord = cmd.split(" - ")[0];
                 userInput.setText(commandWord + " ");
-
-                // Move the typing cursor to the end of the word
                 userInput.requestFocus();
                 userInput.positionCaret(userInput.getText().length());
-            }
-        });
+            });
+            commandDropdown.getItems().add(item);
+        }
+
+        // Add the Welcome Message right when the app starts
+        String welcomeMessage = "Hello! My name is Star. I can track your deadlines, events, and to-dos. Click the ☰ icon to see my commands, or just type a task to begin!";
+
+        dialogContainer.getChildren().add(
+                DialogBox.getStarDialog(welcomeMessage, starImage, false)
+        );
     }
 
     /** Injects the Star instance */

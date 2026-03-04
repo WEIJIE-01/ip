@@ -3,38 +3,18 @@
     -fx-background-color: main-color;
 }
 
-.text-field {
-    -fx-background-color: #d9ffe2;
-    -fx-font: 20px "Arial";
-}
-
-.button {
-    -fx-background-color: mediumspringgreen;
-    -fx-font: italic bold 16px "Arial";
-}
-
-.button:hover {
-    -fx-background-color:cyan;
-    -fx-font-size: 18px;
-}
-
 .button:pressed {
     -fx-background-color:orange;
     -fx-font-size: 20px;
 }
 
-.scroll-pane,
-.scroll-pane .viewport {
-    -fx-background-color: transparent;
-}
 
 .scroll-bar {
     -fx-font-size: 10px;  /* Change width of scroll bar. */
-    -fx-background-color: main-color;
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: #ff9cb4;
+    -fx-background-color: #3730A3;
     -fx-background-radius: 1em;
 }
 
@@ -43,4 +23,16 @@
 .scroll-bar .decrement-button {
     -fx-pref-height: 0;
     -fx-opacity: 0;
+}
+
+/* Blueish-Purple Button Styling */
+.button, .menu-button {
+    -fx-background-color: #4F46E5; /* Bright Indigo */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover, .menu-button:hover {
+    -fx-background-color: #6366F1; /* Lighter Indigo on hover */
 }
